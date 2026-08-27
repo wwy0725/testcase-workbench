@@ -1,0 +1,35 @@
+- row [ref=f1e3]:
+  - gridcell [ref=f1e4]:
+    - generic [ref=f1e7]:
+      - heading "一站式设计协作平台" [level=1] [ref=f1e8]
+      - heading "覆盖产品经理、设计师、工程师协作需求，助力团队提升协作效率、有效管理和使用设计资产。" [level=2] [ref=f1e9]
+      - generic [ref=f1e12]:
+        - button " 下载Sketch插件" [ref=f1e13] [cursor=pointer]:
+          - generic [ref=f1e14]: 
+          - generic [ref=f1e15]: 下载Sketch插件
+        - button " 下载Axure插件 " [ref=f1e16] [cursor=pointer]:
+          - generic [ref=f1e17]: 
+          - text: 下载Axure插件
+          - generic [ref=f1e18]: 
+      - button "快速了解 >" [ref=f1e20] [cursor=pointer]
+  - gridcell [ref=f1e22]:
+    - form [ref=f1e23]:
+      - generic [ref=f1e26]:
+        - generic [ref=f1e27]: 
+        - textbox "请输入用户名" [ref=f1e29]
+      - generic [ref=f1e32]:
+        - generic [ref=f1e33]: 
+        - textbox "请输入密码" [ref=f1e35]
+        - generic [ref=f1e36]: 
+      - generic [ref=f1e40]:
+        - generic [ref=f1e41]:
+          - generic [ref=f1e42]:
+            - generic [ref=f1e43]: 
+            - checkbox " 记住密码" [ref=f1e44] [cursor=pointer]
+          - text: 记住密码
+        - generic [ref=f1e45]:
+          - generic [ref=f1e46]:
+            - generic [ref=f1e47]: 
+            - checkbox " 自动登录" [ref=f1e48] [cursor=pointer]
+          - text: 自动登录
+      - button "登录" [ref=f1e51] [cursor=pointer]

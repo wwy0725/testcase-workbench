@@ -1,0 +1,31 @@
+# ===== Python 字节码缓存 =====
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.pytest_cache/
+
+# ===== Claude Code 用户私有配置 =====
+.claude/settings.local.json
+.claude/settings.json
+
+# ===== 中间产物（按 CLAUDE.md 定义，运行时可重新生成） =====
+_history/
+requests/
+
+# ===== 会话日志（Claude Code 自动产出，300KB 级别噪音） =====
+*command-message*.txt
+*command-result*.txt
+
+# ===== IDE / 编辑器 =====
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ===== 系统文件 =====
+.DS_Store
+Thumbs.db
+desktop.ini
