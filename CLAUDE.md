@@ -7,24 +7,17 @@
 > **本项目不含业务知识库**。业务知识由独立的 `business-knowledge` 项目提供，通过环境变量 `BUSINESS_KNOWLEDGE_ROOT` 接入。
 > 不设置该变量时本项目照常运行，只是没有业务术语辅助。
 
-## 新成员 Setup（**第一次 clone 必须执行**）
+## 新成员 Setup
 
-工作流依赖两个**全局 agent**（`~/.claude/agents/`），必须先安装到本机才能用：
+工作流依赖两个**项目级 agent**（`.claude/agents/`），随 repo 分发，clone 即用，无需安装。
+
+首次使用只需登录内部 CLI（触发 OAuth）：
 
 ```bash
-# 1. 安装全局 agent（幂等，可重复执行）
-# Windows (PowerShell)
-powershell -ExecutionPolicy Bypass -File scripts/install.ps1
-# macOS / Linux (bash)
-./scripts/install.sh
-
-# 2. 首次使用需要登录内部 CLI（任选一个触发 OAuth 登录）
 npx -y --registry=http://npm.dc.servyou-it.com @servyou-ai/17work-cli@latest login
-
-# 3. 启动 Claude Code，说"生成测试用例"或"补充 XMind"即可触发 agent
 ```
 
-> agent 升级时只需重新跑 `install.ps1` / `install.sh`，源在 `agents/` 目录。
+启动 Claude Code，说"生成测试用例"或"补充 XMind"即可触发 agent。
 
 ## 业务知识库接入（**可选**）
 
@@ -49,8 +42,8 @@ $env:BUSINESS_KNOWLEDGE_ROOT = "D:\Trae CN\projects\business-knowledge"
 | 庄周 `17boot` 业务项目 | `17boot-skill` | 拉取远端激活说明 + 业务知识 |
 | `用例参考.xmind` 格式模板（层级结构参考，含占位说明文字） | `xmind` skill | `python3 ~/.claude/skills/xmind/parse_xmind.py 用例参考.xmind` |
 | `202607.xmind` 具体用例（参照格式模板编写的真实用例） | `xmind` skill | `python3 ~/.claude/skills/xmind/parse_xmind.py 202607.xmind` |
-| "生成测试用例" / "出测试点" | `testcase-generator` agent（**全局**） | `~/.claude/agents/testcase-generator.md` |
-| 现有 XMind + 新设计文档，"补充"/"完善"/"优化这份 XMind" | `testcase-supplementer` agent（**全局**） | `~/.claude/agents/testcase-supplementer.md` |
+| "生成测试用例" / "出测试点" | `testcase-generator` agent（**项目级**） | `.claude/agents/testcase-generator.md` |
+| 现有 XMind + 新设计文档，"补充"/"完善"/"优化这份 XMind" | `testcase-supplementer` agent（**项目级**） | `.claude/agents/testcase-supplementer.md` |
 
 **关键原则**：不要用 Playwright 抓取以上平台的页面 — 它们的全局 CLI/skill 已能直接输出结构化内容（JSON/Markdown）。
 
@@ -63,10 +56,10 @@ $env:BUSINESS_KNOWLEDGE_ROOT = "D:\Trae CN\projects\business-knowledge"
 | 从零生成用例 | `testcase-generator` | 多源拉取 → 整合 → 生成测试点 → 生成测试用例 → `md2xmind.py` → XMind |
 | 补充优化现有用例 | `testcase-supplementer` | 解析现有 XMind → 拉新文档 → 识别补充点 → 生成 plan → `xmind-edit.py apply` → 输出 `<原名>-new.xmind` |
 
-- 两个 agent 都定义在 `~/.claude/agents/`（**全局**，任意项目可用）
+- 两个 agent 都定义在 `.claude/agents/`（**项目级**，随 repo 分发，任意 clone 该项目即用）
 - 触发关键词：见各 agent 的 `description` 字段
 
-> **关于 subagent 全局化**：`~/.claude/agents/` 下的 agent 在所有项目自动可用；`<项目>/.claude/agents/` 下的仅限当前项目。
+> **关于 subagent 项目级**：`.claude/agents/` 下的 agent 仅限当前项目使用，但随 repo 分发，clone 即可用；`~/.claude/agents/` 下的才全局可用。
 
 ### 复用原则（项目硬约束）
 - **能复用就复用，能扩展就扩展，减少不必要的新增**：
@@ -248,8 +241,8 @@ H5 功能点（必带元数据块）
 | 文件 | 负责 | 不负责 | 示例 |
 |---|---|---|---|
 | **`CLAUDE.md`**（本文件） | 项目级权威规则源：结构硬规则、优先级规则(P1-P4)、格式规范、生成后检查项 | 不写 agent 工作流细节 | "H4 必填"、"P1=阻塞性"、"nested bullet" |
-| **`~/.claude/agents/testcase-generator.md`** | 生成用例的**工作流**（阶段 0-8） | 不重复 CLAUDE.md 已有规则，引用即可 | "先读庄周→再读 Baymax→生成测试点→导出 XMind" |
-| **`~/.claude/agents/testcase-supplementer.md`** | 补充优化的**工作流** + 补充特有规则 + 风格约束 | 不重复 CLAUDE.md 已有规则，引用即可 | "不强制加元数据"、"优先改写 H5"、"散文+缩进" |
+| **`.claude/agents/testcase-generator.md`** | 生成用例的**工作流**（阶段 0-8） | 不重复 CLAUDE.md 已有规则，引用即可 | "先读庄周→再读 Baymax→生成测试点→导出 XMind" |
+| **`.claude/agents/testcase-supplementer.md`** | 补充优化的**工作流** + 补充特有规则 + 风格约束 | 不重复 CLAUDE.md 已有规则，引用即可 | "不强制加元数据"、"优先改写 H5"、"散文+缩进" |
 
 **维护原则**：
 1. **CLAUDE.md 是唯一规则权威** — 结构/格式/优先级规则只在这里写一份
@@ -258,7 +251,7 @@ H5 功能点（必带元数据块）
    - 影响两个 agent 的 → 写 CLAUDE.md
    - 只影响生成流程的 → 写 generator
    - 只影响补充流程的 → 写 supplementer
-4. **禁止在 `<项目>/.claude/agents/` 下创建 agent** — agent 全是全局的，项目级只放 CLAUDE.md
+4. **agent 定义在 `.claude/agents/`** — 本项目 agent 是**项目级**（随 repo 分发），与 CLAUDE.md 同级维护
 
 ## 归档说明
 
@@ -266,7 +259,7 @@ H5 功能点（必带元数据块）
 
 | 旧文件 | 替代为 |
 |---|---|
-| `.trae/rules/测试用例生成整体流程规则.md` | `~/.claude/agents/testcase-generator.md`（全局 subagent） |
-| `.trae/rules/生成测试点规则.md` | `~/.claude/agents/testcase-generator.md` |
-| `.trae/rules/基于测试点生成测试用例规则.md` | `~/.claude/agents/testcase-generator.md` |
-| `.trae/rules/测试用例设计.md` | `~/.claude/agents/testcase-generator.md` |
+| `.trae/rules/测试用例生成整体流程规则.md` | `.claude/agents/testcase-generator.md`（项目级 subagent） |
+| `.trae/rules/生成测试点规则.md` | `.claude/agents/testcase-generator.md` |
+| `.trae/rules/基于测试点生成测试用例规则.md` | `.claude/agents/testcase-generator.md` |
+| `.trae/rules/测试用例设计.md` | `.claude/agents/testcase-generator.md` |

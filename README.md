@@ -6,15 +6,14 @@
 
 ```
 testcase-workbench/
-├── agents/                        ← 全局 subagent 定义
-│   ├── testcase-generator.md      ← 从零生成用例
-│   └── testcase-supplementer.md   ← 补充优化现有 XMind
+├── .claude/
+│   └── agents/                    ← 项目级 subagent 定义（随 repo 分发）
+│       ├── testcase-generator.md      ← 从零生成用例
+│       └── testcase-supplementer.md   ← 补充优化现有 XMind
 ├── scripts/
 │   ├── md2xmind.py                ← Markdown → XMind 全量转换
 │   ├── xmind-edit.py              ← XMind 增量编辑（增/删/改）
-│   ├── search-related-docs.py     ← 全文检索知识库 + Baymax 索引
-│   ├── install.ps1                ← 安装全局 agent（Windows）
-│   └── install.sh                 ← 安装全局 agent（macOS/Linux）
+│   └── search-related-docs.py     ← 全文检索知识库 + Baymax 索引
 ├── requests/                      ← 需求快照（中间产物，gitignore）
 ├── testpoints/                    ← 测试点 Markdown
 ├── testcases/                     ← 测试用例 Markdown
@@ -25,14 +24,13 @@ testcase-workbench/
 ## 快速开始
 
 ```bash
-# 1. 安装全局 agent
-powershell -ExecutionPolicy Bypass -File scripts/install.ps1
-
-# 2. 登录内部 CLI
+# 登录内部 CLI（仅第一次需要）
 npx -y --registry=http://npm.dc.servyou-it.com @servyou-ai/17work-cli@latest login
 
-# 3. 启动 Claude Code，说"生成测试用例"即可
+# 启动 Claude Code，说"生成测试用例"即可
 ```
+
+> agent 随 repo 分发（`.claude/agents/`），clone 即用，无需安装。
 
 ## 接入业务知识库（可选）
 
