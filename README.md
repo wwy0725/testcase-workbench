@@ -48,3 +48,23 @@ $env:BUSINESS_KNOWLEDGE_ROOT = "D:\Trae CN\projects\business-knowledge"
 | `business-knowledge` | 业务知识存储 | 术语表、功能文档、历史用例索引（**团队相关**） |
 
 两个项目独立 git 仓库，独立维护。
+
+## 跨平台打包（skill）
+
+本项目可打包成**标准 skill** 供其他平台/团队安装使用，产物在 `skills/testcase-workbench/`：
+
+```
+skills/testcase-workbench/
+├── SKILL.md                       ← 入口：触发词 + 前置依赖清单 + 工作流
+├── .claude/agents/                ← 调度 subagent（随包分发）
+├── scripts/                       ← 工具脚本（纯 Python stdlib，零第三方依赖）
+├── references/用例规则.md         ← 用例结构/优先级/格式规则（团队无关）
+└── templates/用例参考.xmind      ← 格式模板
+```
+
+**安装**：把 `skills/testcase-workbench/` 拷到任意平台的 `~/.claude/skills/` 目录，说"生成测试用例"即可。
+
+**特性**：
+- 核心脚本零依赖，离线可用（`parse_xmind.py` / `md2xmind.py` / `xmind-edit.py`）
+- 外部平台 skill（庄周/禅道/Walle/17work/Baymax）是**前置依赖**，SKILL.md 清单声明，agent 自动探测并降级
+- 业务知识库为可选（`$BUSINESS_KNOWLEDGE_ROOT`），未设则跑纯规则版

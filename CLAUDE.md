@@ -69,6 +69,30 @@ $env:BUSINESS_KNOWLEDGE_ROOT = "D:\Trae CN\projects\business-knowledge"
   - 全量生成 XMind → `scripts/md2xmind.py`（**不重写转换器**）
 - agent 本身**只是"调度 + 推理"层**，不引入新脚本/工具
 
+### Skill 打包同步（项目硬约束）
+
+本项目可打包成跨平台 skill，产物在 `skills/testcase-workbench/`。**agent 文件存在两份**：
+- 源：`.claude/agents/`（项目实际使用的调度层）
+- 副本：`skills/testcase-workbench/.claude/agents/`（skill 包内，随包分发）
+
+**修改 agent 文件时必须两处同步**，禁止只改一处：
+
+| 改了什么 | 必须同步到 |
+|---|---|
+| `.claude/agents/*.md` | `skills/testcase-workbench/.claude/agents/*.md` |
+| `scripts/` 下脚本 | `skills/testcase-workbench/scripts/` |
+| 用例规则（CLAUDE.md 相关章节） | `skills/testcase-workbench/references/用例规则.md` |
+| `用例参考.xmind` | `skills/testcase-workbench/templates/` |
+
+**同步命令**（改完跑一次）：
+```bash
+cd "d:/Trae CN/projects/testcase-workbench"
+cp .claude/agents/testcase-generator.md .claude/agents/testcase-supplementer.md skills/testcase-workbench/.claude/agents/
+cp scripts/md2xmind.py scripts/xmind-edit.py scripts/search-related-docs.py skills/testcase-workbench/scripts/
+```
+
+> **注意**：`scripts/parse_xmind.py` **不在**项目 `scripts/` 下（原项目无此文件），它只在 `~/.claude/skills/xmind/`（源）和 `skills/testcase-workbench/scripts/`（skill 副本）两处。改 parse_xmind 时同步这两处，项目 `scripts/` 不维护它。
+
 ## 输出文件位置
 
 | 类型 | 路径 | 命名 |
