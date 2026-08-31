@@ -133,6 +133,8 @@ python scripts/parse_xmind.py <xmind_path> "<一级节点标题>" <输出目录>
 
 **输出**：一份"补充点清单"，每条记录 `{原 XMind 中的 H3 父节点 → 现有或新增 H4 → 现有或新增 H5 → 新增 H6}`。
 
+**遗漏判断**：用 CLAUDE.md「测试设计方法」8 种方法清单对照原 XMind——若某功能点缺少某类方法应覆盖的场景（如缺边界值离点、缺非法状态转换、缺错误推测的空值/null 场景），视为遗漏，纳入补充点清单。
+
 ### 阶段 5：生成补充计划（JSON）
 
 **按 `scripts/xmind-edit.py apply` 接受的格式**（见该脚本 docstring）：
