@@ -1,15 +1,15 @@
 ---
 name: testcase-workbench
 description: |
-  生成/补充优化测试用例工作台（团队无关）。当用户说以下任意一种时使用：
+  生成/补充优化测试用例工作台（平台无关）。当用户说以下任意一种时使用：
   - "生成测试用例" / "出测试点" / "帮我做测试用例" / "分析这个需求"
   - 提供庄周/禅道/Walle/17work/Baymax 需求 URL 让出用例
   - "补充测试用例" / "补漏" / "完善/优化这份 XMind" / "补全这份用例"
   - "根据这几份文档补这份 XMind"
   产出：Markdown 测试点 + Markdown 测试用例 + XMind 用例文件。
-  核心脚本零第三方依赖（纯 Python stdlib），可跨平台（Windows/macOS/Linux）。
+  工作流以平台无关的通用提示词提供（workflows/），脚本纯 Python stdlib（零第三方依赖），可跨平台。
 
-  不要用于：纯查看需求/接口（用 walle/zentao 各自 skill）、UI 自动化测试（用 playwright-test-builder）、代码 review。
+  不要用于：纯查看需求/接口（用 walle/zentao 各自 skill）、UI 自动化测试、代码 review。
 ---
 
 # Testcase Workbench Skill
@@ -28,20 +28,28 @@ description: |
 
 ## 使用方法
 
-安装到 `~/.claude/skills/testcase-workbench/`（或任意平台 skill 目录），在 Claude Code 中说触发词即可：
+**本 skill 已平台无关化**：能力以两套形式提供——
 
+1. **工作流提示词**（`workflows/`）：可直接粘贴到任意平台智能体的系统提示词/人设框，推荐跨平台使用
+2. **工具脚本**（`scripts/`）：纯 Python stdlib，供工作流调用产出 XMind
+
+在 Claude Code 中使用触发行词即可：
 ```
 生成测试用例 / 出测试点 / 补充这份 XMind / 优化这份 XMind
 ```
+
+在非 Claude Code 平台（自研智能体平台 / Coze / 百炼 / IDE Agent 等）：
+见 [workflows/PLATFORMS.md](workflows/PLATFORMS.md) 的接入说明。
 
 ## 目录结构
 
 ```
 testcase-workbench/
 ├── SKILL.md                       ← 本文件（入口）
-├── .claude/agents/
-│   ├── testcase-generator.md      ← 从零生成用例（subagent）
-│   └── testcase-supplementer.md   ← 补充优化现有 XMind（subagent）
+├── workflows/                     ← 平台无关的工作流（通用智能体提示词）
+│   ├── generate.md                ← 生成测试用例（可直接粘贴为智能体提示词）
+│   ├── supplement.md              ← 补充优化现有 XMind（可直接粘贴为智能体提示词）
+│   └── PLATFORMS.md               ← 跨平台接入说明
 ├── scripts/                       ← 工具脚本（纯 Python stdlib，零第三方依赖）
 │   ├── parse_xmind.py             ← 读 XMind → Markdown 树
 │   ├── md2xmind.py                ← Markdown → XMind 全量转换
@@ -55,11 +63,11 @@ testcase-workbench/
 
 ## 前置依赖清单（跨平台安装必读）
 
-本 skill 自带能力（脚本/agent/规则）**零依赖**。但访问公司平台需外部 skill/CLI，它们是**独立安装的前置条件**，不随本 skill 打包：
+本 skill 自带能力（脚本/工作流/规则）**零依赖**。但访问公司平台需外部 skill/CLI，它们是**独立安装的前置条件**，不随本 skill 打包：
 
 | 能力 | 依赖来源 | 安装方式 | 是否必装 |
 |---|---|---|---|
-| 生成/补充核心逻辑 | 本 skill（`scripts/` + `.claude/agents/`） | 随 skill 自带 | ✅ 必装 |
+| 生成/补充核心逻辑 | 本 skill（`scripts/` + `workflows/`） | 随 skill 自带 | ✅ 必装 |
 | 庄周（产品稿） | `@servyou-ai/chuangtzu-cli`（npm） | `npx -y --registry=http://npm.dc.servyou-it.com @servyou-ai/chuangtzu-cli@latest` | 按需 |
 | 禅道（需求） | `zentao-skill`（全局 skill） | 安装到 `~/.claude/skills/zentao-skill/` | 按需 |
 | Walle（接口） | `walle-skill`（全局 skill） | 安装到 `~/.claude/skills/walle-skill/` | 按需 |
@@ -72,13 +80,13 @@ testcase-workbench/
 npx -y --registry=http://npm.dc.servyou-it.com @servyou-ai/17work-cli@latest login
 ```
 
-**依赖降级**：外部 skill 未安装时，agent 会自动探测并降级——请用户直接粘贴文档内容，照常生成用例，不中断。核心脚本 `parse_xmind.py` / `md2xmind.py` / `xmind-edit.py` **不依赖任何外部 skill**，离线可用。
+**依赖降级**：外部 skill 未安装时，工作流会自动探测并降级——请用户直接粘贴文档内容，照常生成用例，不中断。核心脚本 `parse_xmind.py` / `md2xmind.py` / `xmind-edit.py` **不依赖任何外部 skill**，离线可用。
 
 ## 工作流
 
-### 工作流 1：生成测试用例
+完整工作流见 `workflows/` 目录（平台无关提示词）：
 
-派发到 **`testcase-generator`** subagent（`.claude/agents/testcase-generator.md`）：
+### 工作流 1：生成测试用例 → [workflows/generate.md](workflows/generate.md)
 
 ```
 多源拉取（庄周/禅道/Walle/17work/Baymax）→ 整合 → 生成测试点 → 生成测试用例 → md2xmind.py → XMind
@@ -89,9 +97,7 @@ npx -y --registry=http://npm.dc.servyou-it.com @servyou-ai/17work-cli@latest log
 - `testcases/{需求名称}-测试用例-{序号}.md`
 - `xmind/{需求名称}-测试用例-{序号}.xmind`
 
-### 工作流 2：补充优化现有 XMind
-
-派发到 **`testcase-supplementer`** subagent（`.claude/agents/testcase-supplementer.md`）：
+### 工作流 2：补充优化现有 XMind → [workflows/supplement.md](workflows/supplement.md)
 
 ```
 解析现有 XMind → 拉新文档 → 识别补充点 → 生成 plan → xmind-edit.py apply → 输出 <原名>-new.xmind
@@ -118,4 +124,11 @@ npx -y --registry=http://npm.dc.servyou-it.com @servyou-ai/17work-cli@latest log
 
 ## 详细规则
 
-用例结构硬规则、优先级规则（P1-P4）、格式规范、生成后检查项 → 见 [references/用例规则.md](references/用例规则.md) 和两个 agent 文件（阶段 0 会加载）。
+用例结构硬规则、优先级规则（P1-P4）、格式规范、生成后检查项 → 见 [references/用例规则.md](references/用例规则.md)（工作流启动时加载）。
+
+## 跨平台说明
+
+- 本 skill 已去掉 Claude 专属的 `.claude/agents/` subagent，能力降级为**通用提示词（workflows/）+ 平台无关脚本**
+- 数据连接器（庄周/禅道/Walle/17work/Baymax）外部化为前置依赖，可降级为用户粘贴内容
+- 平台能执行 Python → 三样产物全部可落地；不能 → 只出 Markdown，XMind离线补跑
+- 详细接入见 [workflows/PLATFORMS.md](workflows/PLATFORMS.md)

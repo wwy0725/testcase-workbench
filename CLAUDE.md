@@ -71,15 +71,16 @@ $env:BUSINESS_KNOWLEDGE_ROOT = "D:\Trae CN\projects\business-knowledge"
 
 ### Skill 打包同步（项目硬约束）
 
-本项目可打包成跨平台 skill，产物在 `skills/testcase-workbench/`。**agent 文件存在两份**：
-- 源：`.claude/agents/`（项目实际使用的调度层）
-- 副本：`skills/testcase-workbench/.claude/agents/`（skill 包内，随包分发）
+本项目可打包成跨平台 skill，产物在 `skills/testcase-workbench/`。skill 包是**通用提示词 + 脚本**形式，不含 Claude 专属的 `.claude/agents/`。**agent 工作流存在两份表述**，修改时必须两处同步：
 
-**修改 agent 文件时必须两处同步**，禁止只改一处：
+- 源：`.claude/agents/`（Claude Code 项目级调度层，含 `tools:`/`model:` frontmatter）
+- 通用版：`skills/testcase-workbench/workflows/`（去 Claude 专属语法，可供任意平台智能体直接粘贴）
+
+**同步关系**：改项目 agent 的工作流逻辑时，把同样逻辑同步到 `workflows/*.md`（去 frontmatter、去 Claude 平台词汇、改通用表述）。项目 agent 保留不动，跨平台能力由 workflows 承载。
 
 | 改了什么 | 必须同步到 |
 |---|---|
-| `.claude/agents/*.md` | `skills/testcase-workbench/.claude/agents/*.md` |
+| `.claude/agents/*.md`（工作流逻辑） | `skills/testcase-workbench/workflows/` |
 | `scripts/` 下脚本 | `skills/testcase-workbench/scripts/` |
 | 用例规则（CLAUDE.md 相关章节） | `skills/testcase-workbench/references/用例规则.md` |
 | `用例参考.xmind` | `skills/testcase-workbench/templates/` |
@@ -87,9 +88,9 @@ $env:BUSINESS_KNOWLEDGE_ROOT = "D:\Trae CN\projects\business-knowledge"
 **同步命令**（改完跑一次）：
 ```bash
 cd "d:/Trae CN/projects/testcase-workbench"
-cp .claude/agents/testcase-generator.md .claude/agents/testcase-supplementer.md skills/testcase-workbench/.claude/agents/
 cp scripts/md2xmind.py scripts/xmind-edit.py scripts/search-related-docs.py skills/testcase-workbench/scripts/
 ```
+> `workflows/*.md` 是通用提示词，需手工从 `.claude/agents/*.md` 提炼改写（去 frontmatter / Claude 专属语法），不直接 cp。改 generator 同步 `workflows/generate.md`，改 supplementer 同步 `workflows/supplement.md`。
 
 > **注意**：`scripts/parse_xmind.py` **不在**项目 `scripts/` 下（原项目无此文件），它只在 `~/.claude/skills/xmind/`（源）和 `skills/testcase-workbench/scripts/`（skill 副本）两处。改 parse_xmind 时同步这两处，项目 `scripts/` 不维护它。
 
