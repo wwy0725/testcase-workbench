@@ -33,13 +33,13 @@ description: |
 1. **工作流提示词**（`workflows/`）：可直接粘贴到任意平台智能体的系统提示词/人设框，推荐跨平台使用
 2. **工具脚本**（`scripts/`）：纯 Python stdlib，供工作流调用产出 XMind
 
-在 Claude Code 中使用触发行词即可：
+触发关键词（各平台按自身机制匹配 `description` 字段）：
+
 ```
 生成测试用例 / 出测试点 / 补充这份 XMind / 优化这份 XMind
 ```
 
-在非 Claude Code 平台（自研智能体平台 / Coze / 百炼 / IDE Agent 等）：
-见 [workflows/PLATFORMS.md](workflows/PLATFORMS.md) 的接入说明。
+非 skill 式平台（手动配置智能体、粘贴提示词）：见 [workflows/PLATFORMS.md](workflows/PLATFORMS.md)。
 
 ## 目录结构
 
@@ -65,14 +65,14 @@ testcase-workbench/
 
 本 skill 自带能力（脚本/工作流/规则）**零依赖**。但访问公司平台需外部 skill/CLI，它们是**独立安装的前置条件**，不随本 skill 打包：
 
-| 能力 | 依赖来源 | 安装方式 | 是否必装 |
+| 能力 | 依赖来源 | 接入方式 | 是否必装 |
 |---|---|---|---|
 | 生成/补充核心逻辑 | 本 skill（`scripts/` + `workflows/`） | 随 skill 自带 | ✅ 必装 |
-| 庄周（产品稿） | `@servyou-ai/chuangtzu-cli`（npm） | `npx -y --registry=http://npm.dc.servyou-it.com @servyou-ai/chuangtzu-cli@latest` | 按需 |
-| 禅道（需求） | `zentao-skill`（全局 skill） | 安装到 `~/.claude/skills/zentao-skill/` | 按需 |
-| Walle（接口） | `walle-skill`（全局 skill） | 安装到 `~/.claude/skills/walle-skill/` | 按需 |
-| Baymax（历史用例） | `usecase-skill`（全局 skill） | 安装到 `~/.claude/skills/usecase-skill/` | 按需 |
-| 17work（Spec/知识库） | `@servyou-ai/17work-cli`、`@servyou-ai/17work-spec-cli`（npm） | `npx -y --registry=... @servyou-ai/17work-cli@latest login` | 按需 |
+| 庄周（产品稿） | `@servyou-ai/chuangtzu-cli`（npm） | `npx -y --registry=http://npm.dc.servyou-it.com @servyou-ai/chuangtzu-cli@latest`（平台无关，直接跑） | 按需 |
+| 禅道（需求） | `zentao-skill` | 平台连接器机制安装；命令行调用见 `workflows/generate.md`（`<skill_dir>` 占位） | 按需 |
+| Walle（接口） | `walle-skill` | 同上 | 按需 |
+| Baymax（历史用例） | `usecase-skill` | 同上 | 按需 |
+| 17work（Spec/知识库） | `@servyou-ai/17work-cli`、`@servyou-ai/17work-spec-cli`（npm） | `npx -y --registry=... @servyou-ai/17work-cli@latest login`（平台无关） | 按需 |
 | 业务知识库 | `$BUSINESS_KNOWLEDGE_ROOT`（独立项目） | 设置环境变量指向知识库项目 | 可选 |
 
 **安装后首次使用**：需登录内部 CLI（触发 OAuth）：
