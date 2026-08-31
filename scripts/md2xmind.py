@@ -22,7 +22,6 @@
 """
 
 import sys
-import os
 import io
 import re
 import json
@@ -52,6 +51,26 @@ PRIORITY_MARKERS = {
 # 匹配 H5 后紧跟的元数据引用块：
 #   > 优先级: 高 | 关联需求: REQ_X | 前置条件: ... | 测试数据: ...
 META_PATTERN = re.compile(r'^>\s*(.+)$')
+
+
+def extract_meta_field(meta_text, field_prefix):
+    """从 | 分隔的元数据块提取指定字段的值。
+
+    元数据格式: 优先级: P1 | 关联需求: ... | 前置条件: 调用的接口: ... | 测试数据: ...
+    field_prefix 如 '前置条件:'，返回该字段值（去掉字段名和前导空格），未找到返回 None。
+    """
+    for part in meta_text.split('|'):
+        part = part.strip()
+        if part.startswith(field_prefix):
+            return part[len(field_prefix):].strip()
+    return None
+
+
+def strip_meta_field(meta_text, field_prefix):
+    """从 | 分隔的元数据块移除指定字段，保留其余字段（重新用 | 拼接）。"""
+    parts = [p.strip() for p in meta_text.split('|')]
+    kept = [p for p in parts if not p.startswith(field_prefix)]
+    return ' | '.join(kept)
 
 
 def parse_markdown(md_path):
@@ -160,7 +179,16 @@ def parse_markdown(md_path):
         # 元数据行
         m_meta = META_PATTERN.match(line.strip())
         if m_meta and stack and stack[-1]['level'] in (5, 6):
-            stack[-1]['notes'] = m_meta.group(1).strip()
+            meta_text = m_meta.group(1).strip()
+            # 功能用例：从元数据块提取「前置条件」→ flag-red 子节点，并从 notes 移除
+            # （规则 #5：前置条件子节点用 flag-red 标记，不在 notes 里写前置条件文字）
+            # 接口用例（H5 标题含「接口」）不生成 flag-red
+            if stack[-1]['level'] == 5 and '接口' not in stack[-1].get('title', ''):
+                pre = extract_meta_field(meta_text, '前置条件:')
+                if pre:
+                    _precondition_lines.append(pre)
+                    meta_text = strip_meta_field(meta_text, '前置条件:')
+            stack[-1]['notes'] = meta_text
             continue
 
         # 编号列表项（步骤）: "1. xxx"

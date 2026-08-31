@@ -51,6 +51,7 @@ import sys
 import os
 import io
 import json
+import uuid
 import argparse
 import zipfile
 import shutil
@@ -72,17 +73,36 @@ ET.register_namespace('', NS['xmap'])
 # ========== XMind XML 通用操作函数 ==========
 
 def get_title(t):
+    # Zen JSON：t 是 dict
+    if isinstance(t, dict):
+        return t.get('title', '') or ''
+    # XMind 8 XML
     e = t.find('xmap:title', NS)
     return e.text if e is not None and e.text else ''
 
 
 def get_children(t):
+    # Zen JSON：children.attached 是 list
+    if isinstance(t, dict):
+        return t.get('children', {}).get('attached', []) or []
+    # XMind 8 XML
     e = t.find("xmap:children/xmap:topics[@type='attached']", NS)
     return e.findall('xmap:topic', NS) if e is not None else []
 
 
 def get_children_container(t):
-    """获取父节点的 children container（topics[@type='attached']）；不存在则创建。"""
+    """获取父节点的 children container；不存在则创建。返回可 append 的容器。
+
+    XML：返回 topics[@type='attached'] 元素（用 append/append 子 topic）。
+    JSON：返回 children.attached list（直接 append dict）。
+    """
+    # Zen JSON
+    if isinstance(t, dict):
+        children = t.setdefault('children', {})
+        if 'attached' not in children:
+            children['attached'] = []
+        return children['attached']
+    # XMind 8 XML
     children = t.find('xmap:children', NS)
     if children is None:
         children = ET.SubElement(t, f'{{{NS["xmap"]}}}children')
@@ -93,7 +113,28 @@ def get_children_container(t):
     return container
 
 
+def container_topics(container):
+    """children container 的子 topic 列表（兼容 XML topics 元素与 JSON attached list）。"""
+    if isinstance(container, list):
+        return container
+    return container.findall('xmap:topic', NS)
+
+
+def container_remove(container, topic):
+    """从 container 删除 topic（兼容 XML 与 JSON）。"""
+    if isinstance(container, list):
+        if topic in container:
+            container.remove(topic)
+    else:
+        container.remove(topic)
+
+
 def set_title(t, title):
+    # Zen JSON
+    if isinstance(t, dict):
+        t['title'] = title
+        return
+    # XMind 8 XML
     e = t.find('xmap:title', NS)
     if e is None:
         e = ET.SubElement(t, f'{{{NS["xmap"]}}}title')
@@ -105,6 +146,14 @@ def set_title(t, title):
 
 def set_notes(t, notes_text):
     """设置节点 notes（plain 格式）。notes_text 为空字符串则删除 notes。"""
+    # Zen JSON
+    if isinstance(t, dict):
+        if not notes_text:
+            t.pop('notes', None)
+        else:
+            t['notes'] = {'plain': {'content': notes_text}}
+        return
+    # XMind 8 XML
     notes_elem = t.find('xmap:notes', NS)
     if not notes_text:
         if notes_elem is not None:
@@ -120,24 +169,38 @@ def set_notes(t, notes_text):
 
 
 def set_marker(t, marker_id):
-    """设置节点 marker。marker_id 为空字符串则删除 marker。"""
-    # XMind marker 通常以 <marker-ref> 形式出现在 children 之前；为简化只处理最常见的 priority
-    marker_refs = t.findall('xmap:marker-refs/xmap:marker-ref', NS)
-    # 清除所有 priority 类的 marker
-    for ref in list(marker_refs):
-        mid = ref.get('marker-id', '')
-        if mid.startswith('priority-'):
-            ref.getparent() if hasattr(ref, 'getparent') else None
-            refs_parent = ref.getparent() if hasattr(ref, 'getparent') else None
-            if refs_parent is not None:
-                refs_parent.remove(ref)
+    """设置节点 marker。marker_id 为空字符串则删除 priority 类 marker。
+
+    语义：清除节点上所有 priority-* marker（保留 flag-red 等），再追加新 marker。
+    """
+    # Zen JSON
+    if isinstance(t, dict):
+        existing = t.get('markers', [])
+        kept = [m for m in existing if not m.get('markerId', '').startswith('priority-')]
+        if not marker_id:
+            if kept:
+                t['markers'] = kept
+            else:
+                t.pop('markers', None)
+            return
+        kept.append({'markerId': marker_id})
+        t['markers'] = kept
+        return
+    # XMind 8 XML
+    # 标准库 ElementTree 的 Element 无 getparent()（那是 lxml 的），
+    # 必须先拿到 marker-refs 容器，再从容器 remove 子 marker-ref
+    refs_container = t.find('xmap:marker-refs', NS)
+    # 清除所有 priority 类的 marker（保留 flag-red 等）
+    if refs_container is not None:
+        for ref in list(refs_container.findall('xmap:marker-ref', NS)):
+            mid = ref.get('marker-id', '')
+            if mid.startswith('priority-'):
+                refs_container.remove(ref)
     if not marker_id:
         return
     # 添加新 marker
-    refs_container = t.find('xmap:marker-refs', NS)
     if refs_container is None:
         refs_container = ET.SubElement(t, f'{{{NS["xmap"]}}}marker-refs')
-        # 移到 notes 之后
     ref = ET.SubElement(refs_container, f'{{{NS["xmap"]}}}marker-ref')
     ref.set('marker-id', marker_id)
 
@@ -183,8 +246,20 @@ def unique_child_title(parent, desired_title):
     return f"{desired_title} ({n})"
 
 
-def make_topic(title, notes=None, marker=None):
-    """构造一个新 topic 元素。"""
+def make_topic(title, notes=None, marker=None, fmt='xml'):
+    """构造一个新 topic。fmt='xml' 返回 Element，fmt='json' 返回 dict。"""
+    if fmt == 'json':
+        topic = {
+            'id': str(uuid.uuid4()),
+            'class': 'topic',
+            'title': title,
+        }
+        if notes:
+            topic['notes'] = {'plain': {'content': notes}}
+        if marker:
+            topic['markers'] = [{'markerId': marker}]
+        return topic
+    # XMind 8 XML
     topic = ET.Element(f'{{{NS["xmap"]}}}topic')
     topic.set('id', f'new-{os.urandom(4).hex()}')
     # title 必须放在最前
@@ -202,28 +277,41 @@ def make_topic(title, notes=None, marker=None):
 
 
 def load_xmind(xmind_path):
-    """加载 XMind 文件，返回 (root_element, other_files_dict, file_path)。"""
+    """加载 XMind 文件，返回 (root, other_files, fp, fmt)。
+
+    fmt: 'json'（Zen，root 为 sheet list）或 'xml'（XMind 8，root 为 ET.Element）。
+    """
     fp = Path(xmind_path)
     if not fp.exists():
         print(f'错误: 文件不存在: {fp}', file=sys.stderr)
         sys.exit(1)
 
     with zipfile.ZipFile(fp, 'r') as z:
+        names = z.namelist()
+        if 'content.json' in names:
+            # Zen 格式：顶层是 sheet 数组
+            root = json.loads(z.read('content.json').decode('utf-8'))
+            other_files = {n: z.read(n) for n in names if n != 'content.json'}
+            return root, other_files, fp, 'json'
         try:
             content_bytes = z.read('content.xml')
         except KeyError:
-            print(f'错误: XMind 文件不含 content.xml，可能不是 XMind 8 格式', file=sys.stderr)
-            print('       提示：本脚本仅支持 XMind 8 XML 格式；如需支持 JSON 格式请用其他工具', file=sys.stderr)
+            print(f'错误: XMind 文件不含 content.xml 或 content.json', file=sys.stderr)
             sys.exit(1)
-        other_files = {n: z.read(n) for n in z.namelist() if n != 'content.xml'}
+        other_files = {n: z.read(n) for n in names if n != 'content.xml'}
 
     root = ET.fromstring(content_bytes)
-    return root, other_files, fp
+    return root, other_files, fp, 'xml'
 
 
-def save_xmind(root, other_files, fp, output_path=None, in_place=False):
+def save_xmind(root, other_files, fp, output_path=None, in_place=False, fmt='xml'):
     """保存 XMind 文件。默认输出 <原名>-new.xmind；in_place=True 原地覆盖。"""
-    new_content = ET.tostring(root, encoding='utf-8', xml_declaration=True)
+    if fmt == 'json':
+        new_content = json.dumps(root, ensure_ascii=False, indent=2).encode('utf-8')
+        content_name = 'content.json'
+    else:
+        new_content = ET.tostring(root, encoding='utf-8', xml_declaration=True)
+        content_name = 'content.xml'
 
     if in_place:
         target = fp
@@ -235,7 +323,7 @@ def save_xmind(root, other_files, fp, output_path=None, in_place=False):
 
     tmp_path = target.with_suffix(target.suffix + '.tmp')
     with zipfile.ZipFile(tmp_path, 'w', zipfile.ZIP_DEFLATED) as zout:
-        zout.writestr('content.xml', new_content)
+        zout.writestr(content_name, new_content)
         for name, data in other_files.items():
             zout.writestr(name, data)
 
@@ -245,6 +333,14 @@ def save_xmind(root, other_files, fp, output_path=None, in_place=False):
 
 def each_sheet_root(root):
     """遍历所有画布的 root topic。"""
+    # Zen JSON：root 是 sheet 数组，rootTopic 即根
+    if isinstance(root, list):
+        for sheet in root:
+            rt = sheet.get('rootTopic')
+            if rt is not None:
+                yield rt
+        return
+    # XMind 8 XML
     sheets = root.findall('xmap:sheet', NS)
     for sheet in sheets:
         rt = sheet.find('xmap:topic', NS)
@@ -255,7 +351,7 @@ def each_sheet_root(root):
 # ========== 子命令实现 ==========
 
 def cmd_remove(args):
-    root, other_files, fp = load_xmind(args.xmind)
+    root, other_files, fp, fmt = load_xmind(args.xmind)
     target = None
     parent = None
     sheet_root = None
@@ -282,24 +378,24 @@ def cmd_remove(args):
     if parent is None:
         # target 是一级节点，从 sheet root 移除
         container = get_children_container(sheet_root)
-        for c in list(container.findall('xmap:topic', NS)):
+        for c in list(container_topics(container)):
             if c is target:
-                container.remove(c)
+                container_remove(container, c)
                 break
     else:
         container = get_children_container(parent)
-        for c in list(container.findall('xmap:topic', NS)):
+        for c in list(container_topics(container)):
             if c is target:
-                container.remove(c)
+                container_remove(container, c)
                 break
 
-    out = save_xmind(root, other_files, fp, args.output, args.in_place)
+    out = save_xmind(root, other_files, fp, args.output, args.in_place, fmt)
     print(f'✅ 已删除节点 "{get_title(target)}"')
     print(f'   输出: {out}')
 
 
 def cmd_add(args):
-    root, other_files, fp = load_xmind(args.xmind)
+    root, other_files, fp, fmt = load_xmind(args.xmind)
     parent = None
     for sr in each_sheet_root(root):
         for c in get_children(sr):
@@ -338,11 +434,11 @@ def cmd_add(args):
     if final_title != args.child:
         print(f'⚠️  父节点下已存在同名子节点 "{args.child}"，自动改名为 "{final_title}"')
 
-    new_topic = make_topic(final_title, args.notes, args.marker)
+    new_topic = make_topic(final_title, args.notes, args.marker, fmt)
     container = get_children_container(parent)
     container.append(new_topic)
 
-    out = save_xmind(root, other_files, fp, args.output, args.in_place)
+    out = save_xmind(root, other_files, fp, args.output, args.in_place, fmt)
     print(f'✅ 已在父节点 "{args.parent}" 下添加子节点 "{final_title}"')
     print(f'   输出: {out}')
 
@@ -356,7 +452,7 @@ def cmd_apply(args):
         print('计划文件中无 operations', file=sys.stderr)
         sys.exit(1)
 
-    root, other_files, fp = load_xmind(args.xmind)
+    root, other_files, fp, fmt = load_xmind(args.xmind)
     applied = []  # 记录每条 op 的执行结果
     errors = []
 
@@ -391,7 +487,7 @@ def cmd_apply(args):
                     applied.append(f'add "{child_title}" → "{final}" (under "{parent_title}")')
                 else:
                     applied.append(f'add "{child_title}" (under "{parent_title}")')
-                new_topic = make_topic(final, op.get('notes'), op.get('marker'))
+                new_topic = make_topic(final, op.get('notes'), op.get('marker'), fmt)
                 get_children_container(parent).append(new_topic)
             elif optype == 'remove':
                 target = None
@@ -406,9 +502,9 @@ def cmd_apply(args):
                 applied.append(f'remove "{get_title(target)}"')
                 container = get_children_container(parent) if parent is not None else None
                 if container is not None:
-                    for c in list(container.findall('xmap:topic', NS)):
+                    for c in list(container_topics(container)):
                         if c is target:
-                            container.remove(c)
+                            container_remove(container, c)
                             break
             elif optype == 'set-notes':
                 target = None
@@ -447,7 +543,7 @@ def cmd_apply(args):
         if not applied:
             sys.exit(3)
 
-    out = save_xmind(root, other_files, fp, args.output, args.in_place)
+    out = save_xmind(root, other_files, fp, args.output, args.in_place, fmt)
     print(f'✅ 批量应用完成: {len(applied)} 成功, {len(errors)} 失败')
     print(f'   输出: {out}')
     if applied:
@@ -461,7 +557,7 @@ def cmd_apply(args):
 
 
 def cmd_set_notes(args):
-    root, other_files, fp = load_xmind(args.xmind)
+    root, other_files, fp, fmt = load_xmind(args.xmind)
     target = None
     for sr in each_sheet_root(root):
         result = find_node_by_title(sr, args.title, args.parent)
@@ -472,13 +568,13 @@ def cmd_set_notes(args):
         print(f'错误: 未找到节点 "{args.title}"', file=sys.stderr)
         sys.exit(2)
     set_notes(target, args.notes)
-    out = save_xmind(root, other_files, fp, args.output, args.in_place)
+    out = save_xmind(root, other_files, fp, args.output, args.in_place, fmt)
     print(f'✅ 已更新节点 "{args.title}" 的 notes')
     print(f'   输出: {out}')
 
 
 def cmd_set_marker(args):
-    root, other_files, fp = load_xmind(args.xmind)
+    root, other_files, fp, fmt = load_xmind(args.xmind)
     target = None
     for sr in each_sheet_root(root):
         result = find_node_by_title(sr, args.title, args.parent)
@@ -489,7 +585,7 @@ def cmd_set_marker(args):
         print(f'错误: 未找到节点 "{args.title}"', file=sys.stderr)
         sys.exit(2)
     set_marker(target, args.marker)
-    out = save_xmind(root, other_files, fp, args.output, args.in_place)
+    out = save_xmind(root, other_files, fp, args.output, args.in_place, fmt)
     print(f'✅ 已更新节点 "{args.title}" 的 marker = {args.marker}')
     print(f'   输出: {out}')
 

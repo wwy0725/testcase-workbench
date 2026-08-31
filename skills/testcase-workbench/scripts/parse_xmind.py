@@ -23,6 +23,7 @@ import sys
 import os
 import zipfile
 import io
+import json
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -38,6 +39,10 @@ NS = {'xmap': 'urn:xmind:xmap:xmlns:content:2.0'}
 
 
 def get_title(topic):
+    # Zen JSON：topic 是 dict
+    if isinstance(topic, dict):
+        return topic.get('title', '') or ''
+    # XMind 8 XML：topic 是 Element
     title_elem = topic.find('xmap:title', NS)
     if title_elem is not None and title_elem.text:
         return title_elem.text
@@ -45,6 +50,10 @@ def get_title(topic):
 
 
 def get_notes(topic):
+    # Zen JSON
+    if isinstance(topic, dict):
+        return topic.get('notes', {}).get('plain', {}).get('content', '') or ''
+    # XMind 8 XML
     notes_elem = topic.find('xmap:notes/xmap:plain', NS)
     if notes_elem is not None and notes_elem.text:
         return notes_elem.text
@@ -52,6 +61,10 @@ def get_notes(topic):
 
 
 def get_children_topics(topic):
+    # Zen JSON：children.attached 是 list
+    if isinstance(topic, dict):
+        return topic.get('children', {}).get('attached', []) or []
+    # XMind 8 XML
     children_elem = topic.find('xmap:children/xmap:topics[@type="attached"]', NS)
     if children_elem is None:
         return []
@@ -140,6 +153,16 @@ def topic_to_markdown(topic, depth=0, max_depth=30):
 
 def list_sheets(root):
     """列出所有画布（sheet），返回 [(index_1based, sheet_title, root_topic_title), ...]"""
+    # Zen JSON：顶层即 sheet 数组
+    if isinstance(root, list):
+        result = []
+        for i, sheet in enumerate(root, 1):
+            sheet_title = sheet.get('title', f'sheet{i}') or f'sheet{i}'
+            rt = sheet.get('rootTopic')
+            rt_name = get_title(rt) if rt else ''
+            result.append((i, sheet_title, rt_name))
+        return result
+    # XMind 8 XML
     sheets = root.findall('xmap:sheet', NS)
     result = []
     for i, sheet in enumerate(sheets, 1):
@@ -187,16 +210,28 @@ def main():
         print(f'错误: 文件不存在: {xmind_path}', file=sys.stderr)
         sys.exit(1)
 
-    # 解压并解析
+    # 解压并解析（支持 Zen JSON 与 XMind 8 XML 两种格式）
     try:
         with zipfile.ZipFile(xmind_path, 'r') as z:
-            with z.open('content.xml') as f:
-                root = ET.fromstring(f.read())
+            names = z.namelist()
+            if 'content.json' in names:
+                # Zen 格式：顶层是 sheet 数组
+                root = json.loads(z.read('content.json').decode('utf-8'))
+            elif 'content.xml' in names:
+                # XMind 8 格式：XML 根元素
+                root = ET.fromstring(z.read('content.xml'))
+            else:
+                print('错误: XMind 文件不含 content.xml 或 content.json', file=sys.stderr)
+                sys.exit(1)
     except Exception as e:
         print(f'错误: 解析 XMind 失败: {e}', file=sys.stderr)
         sys.exit(1)
 
-    sheets = root.findall('xmap:sheet', NS)
+    # Zen：root 即 sheet 列表；XML：从根查找 sheet
+    if isinstance(root, list):
+        sheets = root
+    else:
+        sheets = root.findall('xmap:sheet', NS)
     if not sheets:
         print('错误: 未找到 sheet 节点', file=sys.stderr)
         sys.exit(1)
@@ -218,10 +253,16 @@ def main():
         sys.exit(1)
 
     sheet = sheets[sheet_index - 1]
-    sheet_title_elem = sheet.find('xmap:title', NS)
-    sheet_title = sheet_title_elem.text if sheet_title_elem is not None and sheet_title_elem.text else f'sheet{sheet_index}'
 
-    root_topic = sheet.find('xmap:topic', NS)
+    # Zen JSON：sheet 是 dict；XMind 8 XML：sheet 是 Element
+    if isinstance(sheet, dict):
+        sheet_title = sheet.get('title', f'sheet{sheet_index}') or f'sheet{sheet_index}'
+        root_topic = sheet.get('rootTopic')
+    else:
+        sheet_title_elem = sheet.find('xmap:title', NS)
+        sheet_title = sheet_title_elem.text if sheet_title_elem is not None and sheet_title_elem.text else f'sheet{sheet_index}'
+        root_topic = sheet.find('xmap:topic', NS)
+
     if root_topic is None:
         print(f'错误: sheet {sheet_index} 内无 root topic', file=sys.stderr)
         sys.exit(1)
