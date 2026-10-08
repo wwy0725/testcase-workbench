@@ -8,17 +8,18 @@
 输入：testcases/{name}-测试用例-{n}.md（遵循 .trae/templates/testcase-spec.md 6 级标题规范）
 输出：xmind/{name}-测试用例-{n}.xmind（可在 XMind 中"导入画布"或直接打开）
 
-节点映射：
-  H1 (#)        → Sheet 标题（XMind 画布名）
-  H2 (##)       → 一级节点（功能模块）
-  H3 (###)      → 二级节点（功能测试点）
-  H4 (####)     → 三级节点（验证点）
-  H5 (#####)    → 用例场景节点（含元数据 notes + 优先级 marker）
-  H6 (######)   → 预期结果子节点（列表项转为子节点）
+节点映射（用例层不固定，由标题后是否跟元数据块标识）：
+  H1 (#)        → 根节点（当前迭代，如"代账合规8月迭代"，日期并入迭代名）
+  H2 (##)       → 需求名称
+  H3 (###)      → 模块名 或 用例（不拆模块时直接用例）
+  H4 (####)     → 子模块名 或 用例（拆模块不拆子模块时用例在这层）
+  H5 (#####)    → 用例（拆了模块+子模块时用例在这层）
+  H6 (######)   → 不用于标题；条件/结果/前置条件一律用 nested bullet 表示
 
-元数据解析（H5 后的 `> 优先级: 高 | 关联需求: REQ_X | ...` 块）：
-  优先级：高/中/低 → XMind marker 标识符（priority-1/2/3）
-  关联需求/前置条件/测试数据 → 节点 notes（plain 文本）
+元数据解析（用例标题后的 `> 优先级: P1 | 关联需求: REQ_X | ...` 块，不管用例落在 H3/H4/H5）：
+  优先级：P1-P4 → XMind marker 标识符（priority-1/2/3/4）
+  关联需求/测试数据 → 节点 notes（plain 文本）
+  前置条件 → 提取为 flag-red 子节点（功能用例与接口用例统一处理，不按标题猜用例类型）
 """
 
 import sys
@@ -78,9 +79,9 @@ def parse_markdown(md_path):
 
     层级结构：
       H5 用例标题
-        ├── 1. 步骤描述          ← 编号列表项 = 步骤节点
-        │     └── - 预期：xxx    ← 步骤下缩进的列表项 = 结果节点
-        └── - 前置条件：xxx      ← flag-red 节点
+        ├── - 前置条件：xxx      ← flag-red 节点（置顶，排在条件/结果之前）
+        └── 1. 步骤描述          ← 编号列表项 = 步骤节点
+              └── - 预期：xxx    ← 步骤下缩进的列表项 = 结果节点
 
     Returns:
         dict: {
@@ -117,7 +118,8 @@ def parse_markdown(md_path):
         parent = stack[-1] if stack else None
         if parent:
             merged_text = '\n'.join(_precondition_lines)
-            parent['children'].append({
+            # 置顶插入：前置条件排在条件/结果子弹之前（用户要求前置条件在最上面）
+            parent['children'].insert(0, {
                 'title': merged_text,
                 'level': 6,
                 'children': [],
@@ -130,7 +132,7 @@ def parse_markdown(md_path):
     step_pattern = re_mod.compile(r'^(\d+)\.\s+(.+)')
     bullet_pattern = re_mod.compile(r'^(\s*)-\s+(.+)')
 
-    root_title = ''  # H1 → 根节点（代账合规）
+    root_title = ''  # H1 → 根节点（当前迭代，如"代账合规8月迭代"）
 
     for raw_line in lines:
         line = raw_line.rstrip('\n')
@@ -147,7 +149,7 @@ def parse_markdown(md_path):
             h6_mode = None
 
             if level == 1:
-                # H1 → 根节点标题（团队名，如"代账合规"）
+                # H1 → 根节点标题（当前迭代，如"代账合规8月迭代"）
                 root_title = title
                 continue
 
@@ -172,22 +174,21 @@ def parse_markdown(md_path):
             attach(node)
             stack.append(node)
 
-            if level in (5, 6):
+            if level >= 3:
                 h6_mode = 'generic'
             continue
 
         # 元数据行
         m_meta = META_PATTERN.match(line.strip())
-        if m_meta and stack and stack[-1]['level'] in (5, 6):
+        if m_meta and stack and stack[-1]['level'] >= 3:
             meta_text = m_meta.group(1).strip()
-            # 功能用例：从元数据块提取「前置条件」→ flag-red 子节点，并从 notes 移除
-            # （规则 #5：前置条件子节点用 flag-red 标记，不在 notes 里写前置条件文字）
-            # 接口用例（H5 标题含「接口」）不生成 flag-red
-            if stack[-1]['level'] == 5 and '接口' not in stack[-1].get('title', ''):
-                pre = extract_meta_field(meta_text, '前置条件:')
-                if pre:
-                    _precondition_lines.append(pre)
-                    meta_text = strip_meta_field(meta_text, '前置条件:')
+            # 从元数据块提取「前置条件」→ flag-red 子节点，并从 notes 移除
+            # （规则 #5：前置条件子节点用 flag-red 标记，不在 notes 里写前置条件文字；
+            #   功能用例和接口用例统一处理，不按标题猜测用例类型）
+            pre = extract_meta_field(meta_text, '前置条件:')
+            if pre:
+                _precondition_lines.append(pre)
+                meta_text = strip_meta_field(meta_text, '前置条件:')
             stack[-1]['notes'] = meta_text
             continue
 
@@ -278,18 +279,18 @@ def build_xmind_topic(node):
     # 节点自身携带的 markers（如 flag-red）
     node_markers = node.get('markers', [])
 
-    if notes_text or node_markers:
-        markers = list(node_markers)
-        # 解析优先级
-        for k, v in PRIORITY_MARKERS.items():
-            if f'优先级: {k}' in notes_text or f'优先级:{k}' in notes_text:
-                markers.append({'markerId': v})
-                break
-        if markers:
-            topic['markers'] = markers
+    markers = list(node_markers)
+    # 解析优先级
+    for k, v in PRIORITY_MARKERS.items():
+        if f'优先级: {k}' in notes_text or f'优先级:{k}' in notes_text:
+            markers.append({'markerId': v})
+            break
+    if markers:
+        topic['markers'] = markers
 
-        # 整段元数据写入 notes
-        # XMind 8 期望格式：{"plain": {"content": "..."}}，多余字段可能不识别
+    # 整段元数据写入 notes（仅当有内容时；flag-red 等纯标记节点 notes 为空，不生成空备注）
+    # XMind 8 期望格式：{"plain": {"content": "..."}}，多余字段可能不识别
+    if notes_text:
         topic['notes'] = {
             'plain': {
                 'content': notes_text,

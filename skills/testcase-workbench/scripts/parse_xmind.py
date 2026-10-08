@@ -175,8 +175,31 @@ def list_sheets(root):
 
 
 def main():
-    # 解析 --sheet 和 --list-sheets 参数（从尾部向前扫描以兼容位置参数）
     args = list(sys.argv[1:])
+
+    # --help / -h：打印用法后退出
+    if '--help' in args or '-h' in args:
+        print(
+            '用法: python parse_xmind.py <xmind_path> [target_title] [output_dir] [--sheet N] [--list-sheets]\n'
+            '\n'
+            '解析 XMind 文件（支持 Zen JSON 与 XMind 8 XML 两种格式），输出 Markdown 结构。\n'
+            '\n'
+            '参数:\n'
+            '  xmind_path    XMind 文件路径\n'
+            '  target_title  可选。递归查找标题等于该值的节点，展开其整棵子树（同名取第一个）;\n'
+            '                省略时列出所有一级节点及二级子节点预览\n'
+            '  output_dir    可选。提取结果同时写入该目录（文件名: <xmind名>_s<画布号>_<标题>.md）\n'
+            '  --sheet N     解析第 N 个画布（从 1 开始，默认 1）\n'
+            '  --list-sheets 只列出文件的全部画布（sheet 标题 + root topic）\n'
+            '\n'
+            '示例:\n'
+            '  python parse_xmind.py 用例参考.xmind              # 列一级节点\n'
+            '  python parse_xmind.py 用例参考.xmind 接口         # 展开指定节点子树\n'
+            '  python parse_xmind.py 202607.xmind --list-sheets  # 列出所有画布\n'
+        )
+        sys.exit(0)
+
+    # 解析 --sheet 和 --list-sheets 参数（从尾部向前扫描以兼容位置参数）
     sheet_index = 1
     list_sheets_only = False
 
@@ -200,6 +223,13 @@ def main():
 
     if len(args) < 1:
         print('用法: python parse_xmind.py <xmind_path> [target_title] [output_dir] [--sheet N] [--list-sheets]', file=sys.stderr)
+        print('加 --help 查看详细说明', file=sys.stderr)
+        sys.exit(1)
+
+    # 未知 flag 拦截（避免被当作文件路径报"文件不存在"）
+    unknown_flags = [a for a in args if a.startswith('--')]
+    if unknown_flags:
+        print(f'错误: 未知参数: {" ".join(unknown_flags)}（可用: --sheet N, --list-sheets, --help）', file=sys.stderr)
         sys.exit(1)
 
     xmind_path = args[0]
