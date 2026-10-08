@@ -32,3 +32,7 @@ desktop.ini
 
 # ===== Skill 打包产物（构建时生成，不入库） =====
 *.zip
+
+# ===== 临时文件 =====
+_tmp_17work/
+check.py
