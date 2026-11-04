@@ -1,0 +1,104 @@
+[    1255ms] [ERROR] 加载 AppConfig 配置出错 @ https://res.wx.qq.com/d/tdocsJSAPI/latest/index.js:12
+[    1265ms] [LOG] tdocJSAPI 1.163.0 @ https://res.wx.qq.com/d/tdocsJSAPI/latest/index.js:36
+[    1269ms] [WARNING] document.domain mutation is ignored because the surrounding agent cluster is origin-keyed. @ https://doc.weixin.qq.com/sheet/e3_AK4A7gauACQCNBDkBuUzxRDWRI0AM?scode=AAoA1wcYAAco79q17nAK4A7gauACQ&tab=gg8h0x:0
+[    1448ms] [LOG] setup onErrorChecker plugin @ https://res.wx.qq.com/d/blankpage/js/vendor_tbase-567673a8-7a85e5.js:0
+[    1450ms] [LOG] setup docCgiErrorChecker plugin @ https://res.wx.qq.com/d/blankpage/js/vendor_tbase-567673a8-7a85e5.js:0
+[    1450ms] [LOG] setup basicPerformanceReport plugin @ https://res.wx.qq.com/d/blankpage/js/vendor_tbase-567673a8-7a85e5.js:0
+[    1458ms] [LOG] xxx getResourceUrl [zh-CN, zh] zh-CN @ https://res.wx.qq.com/d/blankpage/js/common_base-c555d3.js:0
+[    1729ms] [LOG] load lng resources blankpage zh-CN @ https://res.wx.qq.com/d/blankpage/locales/zh-CN/blankpage.e7840bd6253499bd03f3.js:0
+[    1836ms] [INFO] %c当前commit：release/ent_20261029_blankpage(ca162352f)
+ color: blue; @ https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:0
+[    2614ms] [LOG] [2026-11-02T11:24:38.142] [DEBUG] [DDBase] - params erroro: jsonObj2Class @ https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:0
+[    2626ms] [WARNING] 初始化拦截器-2.0 @ https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:0
+[    2627ms] [INFO] ----- re add user index @ https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:0
+[    2742ms] [ERROR] r: (Extension Error) Cannot find docs-component-app-promotion-top-banner extension in metadata!
+    at e.value (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:999640)
+    at https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:998950
+    at Array.forEach (<anonymous>)
+    at e.value (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:998892)
+    at e.<anonymous> (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:996608)
+    at d (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:53595)
+    at u.value (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:53373)
+    at Generator.next (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:54001)
+    at c (https://res.wx.qq.com/d/blankpage/js/vendor_base-059be3de-a9b860.js:1:74177) @ https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:0
+[    2743ms] [ERROR] r: (Extension Error) Cannot find docs-component-record extension in metadata!
+    at e.value (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:999640)
+    at https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:998950
+    at Array.forEach (<anonymous>)
+    at e.value (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:998892)
+    at e.<anonymous> (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:996608)
+    at d (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:53595)
+    at u.value (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:53373)
+    at Generator.next (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:54001)
+    at c (https://res.wx.qq.com/d/blankpage/js/vendor_base-059be3de-a9b860.js:1:74177) @ https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:0
+[    2743ms] [ERROR] r: (Extension Error) Cannot find docs-component-storage-overflow-alert extension in metadata!
+    at e.value (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:999640)
+    at https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:998950
+    at Array.forEach (<anonymous>)
+    at e.value (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:998892)
+    at e.<anonymous> (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:996608)
+    at d (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:53595)
+    at u.value (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:53373)
+    at Generator.next (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:54001)
+    at c (https://res.wx.qq.com/d/blankpage/js/vendor_base-059be3de-a9b860.js:1:74177) @ https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:0
+[    4012ms] [ERROR] 加载 AppConfig 配置出错 @ https://res.wx.qq.com/d/tdocsJSAPI/latest/index.js:12
+[    4017ms] [LOG] tdocJSAPI 1.163.0 @ https://res.wx.qq.com/d/tdocsJSAPI/latest/index.js:36
+[    5728ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:50000/checkLoginState:0
+[    5729ms] [ERROR] [wecom-desktop/request] http://127.0.0.1:50000/checkLoginState error TypeError: Failed to fetch
+    at window.fetch.window.fetch (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/318.74dc3f8e7dfe1d6da346.js:1:39443)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140758
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140043
+    at Object.next (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140148)
+    at d (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:138795)
+    at a (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141172)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141231
+    at new Promise (<anonymous>)
+    at w (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141113)
+    at w (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141245) @ https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:0
+[    5733ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:50001/checkLoginState:0
+[    5733ms] [ERROR] [wecom-desktop/request] http://127.0.0.1:50001/checkLoginState error TypeError: Failed to fetch
+    at window.fetch.window.fetch (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/318.74dc3f8e7dfe1d6da346.js:1:39443)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140758
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140043
+    at Object.next (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140148)
+    at d (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:138795)
+    at a (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141172)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141231
+    at new Promise (<anonymous>)
+    at w (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141113)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:138964 @ https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:0
+[    5734ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:50002/checkLoginState:0
+[    5734ms] [ERROR] [wecom-desktop/request] http://127.0.0.1:50002/checkLoginState error TypeError: Failed to fetch
+    at window.fetch.window.fetch (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/318.74dc3f8e7dfe1d6da346.js:1:39443)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140758
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140043
+    at Object.next (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140148)
+    at d (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:138795)
+    at a (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141172)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141231
+    at new Promise (<anonymous>)
+    at w (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141113)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:138964 @ https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:0
+[    5747ms] [WARNING] [ww-partner-login:client-message] missing handler {type: init} @ https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:0
+[    5833ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://localhost.work.weixin.qq.com:50010/checkLoginState:0
+[    5833ms] [ERROR] [wecom-desktop/request] https://localhost.work.weixin.qq.com:50010/checkLoginState error TypeError: Failed to fetch
+    at window.fetch.window.fetch (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/318.74dc3f8e7dfe1d6da346.js:1:39443)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140758
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140043
+    at Object.next (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140148)
+    at d (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:138795)
+    at a (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141172)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141231
+    at new Promise (<anonymous>)
+    at w (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141113)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:138964 @ https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:0
+[    9724ms] [ERROR] [wecom-desktop/request] https://localhost.work.weixin.qq.com:50011/checkLoginState error AbortError: signal is aborted without reason
+    at o (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140247) @ https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:0
+[    9725ms] [ERROR] [wecom-desktop/request] https://localhost.work.weixin.qq.com:50012/checkLoginState error AbortError: signal is aborted without reason
+    at o (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140247) @ https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:0
+[   13720ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://service-4y7r0fta-1251316161.gz.apigw.tencentcs.com/release/toggleProxy-1613409159:0
+[   13722ms] Error: Network Error
+    at t.exports (https://res.wx.qq.com/d/feature-components/tencent_docs_multi_tools-3fd512.js:1:41499)
+    at m.onerror (https://res.wx.qq.com/d/feature-components/tencent_docs_multi_tools-3fd512.js:1:40306)
+    at XMLHttpRequest.a (https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:1:9410)
+[   13749ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://passport.woa.com/assets/public/images/favicon.ico:0

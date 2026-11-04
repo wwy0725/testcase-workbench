@@ -1,0 +1,12 @@
+- generic [active] [ref=f1e1]:
+  - link [ref=f1e4] [cursor=pointer]:
+    - /url: /
+  - generic [ref=f1e10]:
+    - generic [ref=f1e11]:
+      - generic [ref=f1e12]: 企业身份登录
+      - generic [ref=f1e13] [cursor=pointer]: 切换个人身份登录
+    - iframe [ref=f1e17]:
+      - iframe [ref=f2e3]:
+        - generic [ref=f3e4]:
+          - heading "企业微信扫码登录" [level=2] [ref=f3e7]
+          - generic [ref=f3e11]: 请使用企业微信扫描二维码登录

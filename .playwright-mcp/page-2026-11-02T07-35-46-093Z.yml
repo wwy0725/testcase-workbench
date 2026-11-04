@@ -1,0 +1,290 @@
+- generic [ref=f8e1]:
+  - banner [ref=f8e2]:
+    - generic [ref=f8e4]:
+      - heading [level=1] [ref=f8e6]:
+        - link "亿企赢网络科技有限公司" [ref=f8e7] [cursor=pointer]:
+          - /url: /pro/index.html
+      - navigation [ref=f8e8]:
+        - list [ref=f8e9]:
+          - listitem [ref=f8e10]:
+            - link "我的地盘" [ref=f8e11] [cursor=pointer]:
+              - /url: /pro/my/
+          - listitem [ref=f8e12]:
+            - link "产品" [ref=f8e13] [cursor=pointer]:
+              - /url: /pro/product-index-no.html
+          - listitem [ref=f8e14]:
+            - link "迭代" [ref=f8e15] [cursor=pointer]:
+              - /url: /pro/project-index-no.html
+          - listitem [ref=f8e16]:
+            - link "测试" [ref=f8e17] [cursor=pointer]:
+              - /url: /pro/qa/
+          - listitem [ref=f8e18]
+          - listitem [ref=f8e19]:
+            - link "文档" [ref=f8e20] [cursor=pointer]:
+              - /url: /pro/doc/
+          - listitem [ref=f8e21]:
+            - link "统计" [ref=f8e22] [cursor=pointer]:
+              - /url: /pro/report/
+          - listitem [ref=f8e23]
+          - listitem [ref=f8e24]:
+            - link "组织" [ref=f8e25] [cursor=pointer]:
+              - /url: /pro/company/
+      - generic [ref=f8e27]:
+        - generic [ref=f8e28]:
+          - searchbox [ref=f8e30]
+          - link "GO!" [ref=f8e31] [cursor=pointer]:
+            - /url: javascript:$.gotoObject();
+          - text: 
+        - list [ref=f8e32]:
+          - listitem [ref=f8e33]:
+            - generic [ref=f8e34] [cursor=pointer]: 吴文毅
+            - text:  
+    - generic [ref=f8e38]:
+      - generic [ref=f8e39]:
+        - generic [ref=f8e41]:
+          - button "产品主页" [ref=f8e42] [cursor=pointer]
+          - text:  
+        - generic [ref=f8e45]:
+          - button "代账合规" [ref=f8e46] [cursor=pointer]
+          - text:  
+      - navigation [ref=f8e48]:
+        - list [ref=f8e49]:
+          - listitem [ref=f8e50]:
+            - link "场景" [ref=f8e51] [cursor=pointer]:
+              - /url: /pro/product-browse-209--unclosed-0-requirement.html
+          - listitem [ref=f8e52]:
+            - link "需求" [ref=f8e53] [cursor=pointer]:
+              - /url: /pro/product-browse-209.html
+          - listitem [ref=f8e54]
+          - listitem [ref=f8e55]:
+            - link "计划" [ref=f8e56] [cursor=pointer]:
+              - /url: /pro/productplan-browse-209.html
+          - listitem [ref=f8e57]:
+            - link "路线图" [ref=f8e58] [cursor=pointer]:
+              - /url: /pro/product-roadmap-209.html
+          - listitem [ref=f8e59]
+          - listitem [ref=f8e60]:
+            - link "迭代" [ref=f8e61] [cursor=pointer]:
+              - /url: /pro/product-project-all-209.html
+          - listitem [ref=f8e62]:
+            - link "动态" [ref=f8e63] [cursor=pointer]:
+              - /url: /pro/product-dynamic-209.html
+          - listitem [ref=f8e64]
+          - listitem [ref=f8e65]:
+            - link "文档" [ref=f8e66] [cursor=pointer]:
+              - /url: /pro/doc-objectLibs-product-209-product.html
+          - listitem [ref=f8e67]:
+            - link "模块" [ref=f8e68] [cursor=pointer]:
+              - /url: /pro/tree-browse-209-story.html
+          - listitem [ref=f8e69]:
+            - link "概况" [ref=f8e70] [cursor=pointer]:
+              - /url: /pro/product-view-209.html
+  - main [ref=f8e71]:
+    - generic [ref=f8e72]:
+      - generic [ref=f8e73]:
+        - generic [ref=f8e74]:
+          - link " 返回" [ref=f8e75] [cursor=pointer]:
+            - /url: /pro/product-browse-209-0-196078.html
+            - generic [ref=f8e76]: 
+            - text: 返回
+          - generic [ref=f8e78]:
+            - generic [ref=f8e79]: "258571"
+            - text: 小程序往来核对不一致
+            - link "#4" [ref=f8e81] [cursor=pointer]:
+              - /url: "#"
+        - link " 添加需求" [ref=f8e84] [cursor=pointer]:
+          - /url: /pro/story-create-209-0-196078-0-0-0-0-0--story.html
+          - generic [ref=f8e85]: 
+          - text: 添加需求
+      - generic [ref=f8e86]:
+        - generic [ref=f8e87]:
+          - generic [ref=f8e88]:
+            - generic [ref=f8e89]:
+              - generic [ref=f8e90]: 需求描述
+              - generic [ref=f8e91]:
+                - paragraph [ref=f8e92]: 【背景】小程序对往来，待开票中，显示一年内账龄，打开后实际是3年以上，信息不一致
+                - paragraph [ref=f8e93]:
+                  - link [ref=f8e94] [cursor=pointer]:
+                    - /url: /pro/file-read-930387.png
+                - paragraph [ref=f8e95]: 原因：
+                - paragraph [ref=f8e96]: 1、拿账龄表的末级科目编码和云记账返回的末级科目编码核对；
+                - paragraph [ref=f8e97]: 2、拿账龄表的科目和当前页面传入的往来科目做核对；
+                - paragraph [ref=f8e98]: 以上均核对一致时，展示账龄；以上不一致则默认展示账龄为1年以内（上述案例中，账龄返回的code是1122，但重分类后是2203（用户打开的页面是待开票），因此认为不一致）
+                - paragraph [ref=f8e99]: 【需求】
+                - paragraph [ref=f8e100]:
+                  - link [ref=f8e101] [cursor=pointer]:
+                    - /url: /pro/file-read-931130.png
+            - generic [ref=f8e102]: 验收标准
+          - generic [ref=f8e105]:
+            - generic [ref=f8e106]:
+              - text: 历史记录
+              - button "" [ref=f8e107] [cursor=pointer]
+              - button "" [ref=f8e109] [cursor=pointer]
+              - button " 添加备注" [ref=f8e111] [cursor=pointer]:
+                - generic [ref=f8e112]: 
+                - text: 添加备注
+              - text: 
+            - list [ref=f8e114]:
+              - listitem [ref=f8e115]:
+                - text: 2026-10-26 16:28:54, 由
+                - strong [ref=f8e116]: 陆婷婷
+                - text: Bug转化而来，Bug编号为
+                - strong [ref=f8e117]:
+                  - link "726462" [ref=f8e118] [cursor=pointer]:
+                    - /url: /pro/bug-view-726462.html
+                - text: 。
+              - listitem [ref=f8e119]:
+                - text: 2026-10-26 18:39:18, 由
+                - strong [ref=f8e120]: 陆婷婷
+                - text: 编辑。
+                - button "" [ref=f8e121] [cursor=pointer]
+              - listitem [ref=f8e123]:
+                - text: 2026-10-26 19:09:35, 由
+                - strong [ref=f8e124]: 陆婷婷
+                - text: 变更。
+                - button "" [ref=f8e125] [cursor=pointer]
+                - text: 
+              - listitem [ref=f8e127]:
+                - text: 2026-10-26 19:51:25, 由
+                - strong [ref=f8e128]: 陆婷婷
+                - text: 变更。
+                - button "" [ref=f8e129] [cursor=pointer]
+                - text: 
+              - listitem [ref=f8e131]:
+                - text: 2026-10-27 09:15:46, 由
+                - strong [ref=f8e132]: 陆婷婷
+                - text: 编辑。
+                - button "" [ref=f8e133] [cursor=pointer]
+              - listitem [ref=f8e135]:
+                - text: 2026-10-27 17:28:02, 由
+                - strong [ref=f8e136]: 陆婷婷
+                - text: 变更。
+                - button "" [ref=f8e137] [cursor=pointer]
+                - text: 
+          - generic [ref=f8e140]:
+            - link " 返回" [ref=f8e141] [cursor=pointer]:
+              - /url: /pro/product-browse-209-0-196078.html
+              - generic [ref=f8e142]: 
+              - text: 返回
+            - link " 日志" [ref=f8e144] [cursor=pointer]:
+              - /url: /pro/effort-createForObject-story-258571.html
+              - generic [ref=f8e145]: 
+              - text: 日志
+            - link " 变更" [ref=f8e146] [cursor=pointer]:
+              - /url: /pro/story-change-258571.html
+              - generic [ref=f8e147]: 
+              - text: 变更
+            - link " 评审" [ref=f8e148] [cursor=pointer]:
+              - /url: /pro/story-review-258571.html
+              - generic [ref=f8e149]: 
+              - text: 评审
+            - link " 指派" [ref=f8e150] [cursor=pointer]:
+              - /url: /pro/story-assignTo-258571.html?onlybody=yes
+              - generic [ref=f8e151]: 
+              - text: 指派
+            - link " 关闭" [ref=f8e152] [cursor=pointer]:
+              - /url: /pro/story-close-258571.html?onlybody=yes
+              - generic [ref=f8e153]: 
+              - text: 关闭
+            - button " 用例" [ref=f8e155] [cursor=pointer]:
+              - generic [ref=f8e156]: 
+              - text: 用例
+            - link "" [ref=f8e159] [cursor=pointer]:
+              - /url: /pro/story-edit-258571.html
+            - link "" [ref=f8e161] [cursor=pointer]:
+              - /url: /pro/story-create-209-0-196078-258571-0-0-0-0--story.html?onlybody=yes
+        - generic [ref=f8e164]:
+          - generic [ref=f8e166]:
+            - list [ref=f8e167]:
+              - listitem [ref=f8e168]:
+                - link "基本信息" [ref=f8e169]:
+                  - /url: "#legendBasicInfo"
+              - listitem [ref=f8e170]:
+                - link "需求的一生" [ref=f8e171] [cursor=pointer]:
+                  - /url: "#legendLifeTime"
+            - table [ref=f8e174]:
+              - rowgroup [ref=f8e175]:
+                - row [ref=f8e176]:
+                  - rowheader "所属产品" [ref=f8e177]
+                  - cell [ref=f8e178]:
+                    - link "代账合规" [ref=f8e179] [cursor=pointer]:
+                      - /url: /pro/product-view-209.html
+                - row [ref=f8e180]:
+                  - rowheader "所属模块" [ref=f8e181]
+                  - cell "财赢  企业端" [ref=f8e182]:
+                    - link "财赢" [ref=f8e183] [cursor=pointer]:
+                      - /url: /pro/product-browse-209-0-byModule-196076.html
+                    - generic [ref=f8e184]: 
+                    - link "企业端" [ref=f8e185] [cursor=pointer]:
+                      - /url: /pro/product-browse-209-0-byModule-196078.html
+                - row [ref=f8e186]:
+                  - rowheader "所属计划" [ref=f8e187]
+                  - cell [ref=f8e188]:
+                    - link "代账合规-20261126" [ref=f8e189] [cursor=pointer]:
+                      - /url: /pro/productplan-view-224823.html
+                - row [ref=f8e190]:
+                  - rowheader "需求来源" [ref=f8e191]
+                  - cell "Bug" [ref=f8e192]
+                - row [ref=f8e193]:
+                  - columnheader "来源备注" [ref=f8e194]
+                  - cell [ref=f8e195]
+                - row [ref=f8e196]:
+                  - rowheader "当前状态" [ref=f8e197]
+                  - cell "已变更" [ref=f8e198]
+                - row [ref=f8e201]:
+                  - rowheader "所处阶段" [ref=f8e202]
+                  - cell "已计划" [ref=f8e203]
+                - row [ref=f8e204]:
+                  - rowheader "优先级" [ref=f8e205]
+                  - cell "2" [ref=f8e206]
+                - row [ref=f8e208]:
+                  - rowheader "预计工时" [ref=f8e209]
+                  - cell "0" [ref=f8e210]
+                - row [ref=f8e211]:
+                  - columnheader "关键词" [ref=f8e212]
+                  - cell [ref=f8e213]
+                - row [ref=f8e214]:
+                  - rowheader "抄送给" [ref=f8e215]
+                  - cell "李晨龙" [ref=f8e216]
+          - generic [ref=f8e218]:
+            - list [ref=f8e219]:
+              - listitem [ref=f8e220]:
+                - link "需求" [ref=f8e221]:
+                  - /url: "#legendStories"
+              - listitem [ref=f8e222]:
+                - link "迭代任务" [ref=f8e223] [cursor=pointer]:
+                  - /url: "#legendProjectAndTask"
+              - listitem [ref=f8e224]:
+                - link "相关信息" [ref=f8e225] [cursor=pointer]:
+                  - /url: "#legendRelated"
+            - generic [ref=f8e226]:
+              - generic:
+                - list
+              - list [ref=f8e228]
+      - generic:
+        - navigation
+  - contentinfo [ref=f8e229]:
+    - generic [ref=f8e230]:
+      - list [ref=f8e231]:
+        - listitem [ref=f8e232]:
+          - link "禅道" [ref=f8e233] [cursor=pointer]:
+            - /url: /pro/my/
+        - listitem [ref=f8e234]:
+          - text: ">"
+          - link "产品" [ref=f8e235] [cursor=pointer]:
+            - /url: /pro/product/
+        - listitem [ref=f8e236]:
+          - text: ">"
+          - link "代账合规" [ref=f8e237] [cursor=pointer]:
+            - /url: /pro/product-browse-209-0.html
+        - listitem [ref=f8e238]: ">需求"
+        - listitem [ref=f8e239]: ">需求详情"
+      - generic [ref=f8e240]:
+        - link [ref=f8e242] [cursor=pointer]:
+          - /url: https://api.zentao.net/goto.php?item=aiux
+          - text: Designed by
+          - strong [ref=f8e243]: 艾体验
+        - link " 禅道专业版 8.8.2" [ref=f8e244] [cursor=pointer]:
+          - /url: https://www.zentao.net
+          - generic [ref=f8e245]: 
+          - text: 禅道专业版 8.8.2

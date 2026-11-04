@@ -1,0 +1,146 @@
+[     888ms] [ERROR] Permissions policy violation: unload is not allowed in this document. @ https://res.wx.qq.com/d/aegis/latest/aegis.min.js:9
+[     900ms] [ERROR] 加载 AppConfig 配置出错 @ https://res.wx.qq.com/d/tdocsJSAPI/latest/index.js:12
+[     906ms] [LOG] tdocJSAPI 1.163.0 @ https://res.wx.qq.com/d/tdocsJSAPI/latest/index.js:36
+[     907ms] [WARNING] document.domain mutation is ignored because the surrounding agent cluster is origin-keyed. @ https://doc.weixin.qq.com/sheet/e3_AK4A7gauACQCNBDkBuUzxRDWRI0AM?scode=AAoA1wcYAAco79q17nAK4A7gauACQ&tab=gg8h0x:0
+[    1133ms] [LOG] setup onErrorChecker plugin @ https://res.wx.qq.com/d/blankpage/js/vendor_tbase-567673a8-7a85e5.js:0
+[    1133ms] [LOG] setup docCgiErrorChecker plugin @ https://res.wx.qq.com/d/blankpage/js/vendor_tbase-567673a8-7a85e5.js:0
+[    1133ms] [LOG] setup basicPerformanceReport plugin @ https://res.wx.qq.com/d/blankpage/js/vendor_tbase-567673a8-7a85e5.js:0
+[    1138ms] [LOG] xxx getResourceUrl [zh-CN, zh] zh-CN @ https://res.wx.qq.com/d/blankpage/js/common_base-c555d3.js:0
+[    1371ms] [LOG] load lng resources blankpage zh-CN @ https://res.wx.qq.com/d/blankpage/locales/zh-CN/blankpage.e7840bd6253499bd03f3.js:0
+[    1394ms] [INFO] %c当前commit：release/ent_20261029_blankpage(ca162352f)
+ color: blue; @ https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:0
+[    1750ms] [LOG] [2026-11-02T11:26:58.422] [DEBUG] [DDBase] - params erroro: jsonObj2Class @ https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:0
+[    1760ms] [WARNING] 初始化拦截器-2.0 @ https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:0
+[    1760ms] [INFO] ----- re add user index @ https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:0
+[    1892ms] [ERROR] r: (Extension Error) Cannot find docs-component-app-promotion-top-banner extension in metadata!
+    at e.value (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:999640)
+    at https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:998950
+    at Array.forEach (<anonymous>)
+    at e.value (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:998892)
+    at e.<anonymous> (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:996608)
+    at d (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:53595)
+    at u.value (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:53373)
+    at Generator.next (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:54001)
+    at c (https://res.wx.qq.com/d/blankpage/js/vendor_base-059be3de-a9b860.js:1:74177) @ https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:0
+[    1893ms] [ERROR] r: (Extension Error) Cannot find docs-component-record extension in metadata!
+    at e.value (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:999640)
+    at https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:998950
+    at Array.forEach (<anonymous>)
+    at e.value (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:998892)
+    at e.<anonymous> (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:996608)
+    at d (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:53595)
+    at u.value (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:53373)
+    at Generator.next (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:54001)
+    at c (https://res.wx.qq.com/d/blankpage/js/vendor_base-059be3de-a9b860.js:1:74177) @ https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:0
+[    1893ms] [ERROR] r: (Extension Error) Cannot find docs-component-storage-overflow-alert extension in metadata!
+    at e.value (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:999640)
+    at https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:998950
+    at Array.forEach (<anonymous>)
+    at e.value (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:998892)
+    at e.<anonymous> (https://res.wx.qq.com/d/blankpage/chunk/429-1f8ea5.js:6:996608)
+    at d (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:53595)
+    at u.value (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:53373)
+    at Generator.next (https://res.wx.qq.com/d/blankpage/js/vendor_base-cdd60c62-d2291c.js:5:54001)
+    at c (https://res.wx.qq.com/d/blankpage/js/vendor_base-059be3de-a9b860.js:1:74177) @ https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:0
+[    3546ms] [ERROR] 加载 AppConfig 配置出错 @ https://res.wx.qq.com/d/tdocsJSAPI/latest/index.js:12
+[    3549ms] [LOG] tdocJSAPI 1.163.0 @ https://res.wx.qq.com/d/tdocsJSAPI/latest/index.js:36
+[    4802ms] [ERROR] Permissions policy violation: unload is not allowed in this document. @ https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/318.74dc3f8e7dfe1d6da346.js:0
+[    4840ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:50000/checkLoginState:0
+[    4841ms] [ERROR] [wecom-desktop/request] http://127.0.0.1:50000/checkLoginState error TypeError: Failed to fetch
+    at window.fetch.window.fetch (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/318.74dc3f8e7dfe1d6da346.js:1:39443)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140758
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140043
+    at Object.next (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140148)
+    at d (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:138795)
+    at a (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141172)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141231
+    at new Promise (<anonymous>)
+    at w (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141113)
+    at w (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141245) @ https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:0
+[    4843ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:50001/checkLoginState:0
+[    4843ms] [ERROR] [wecom-desktop/request] http://127.0.0.1:50001/checkLoginState error TypeError: Failed to fetch
+    at window.fetch.window.fetch (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/318.74dc3f8e7dfe1d6da346.js:1:39443)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140758
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140043
+    at Object.next (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140148)
+    at d (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:138795)
+    at a (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141172)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141231
+    at new Promise (<anonymous>)
+    at w (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141113)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:138964 @ https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:0
+[    4843ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://127.0.0.1:50002/checkLoginState:0
+[    4844ms] [ERROR] [wecom-desktop/request] http://127.0.0.1:50002/checkLoginState error TypeError: Failed to fetch
+    at window.fetch.window.fetch (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/318.74dc3f8e7dfe1d6da346.js:1:39443)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140758
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140043
+    at Object.next (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140148)
+    at d (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:138795)
+    at a (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141172)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141231
+    at new Promise (<anonymous>)
+    at w (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141113)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:138964 @ https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:0
+[    4854ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://localhost.work.weixin.qq.com:50010/checkLoginState:0
+[    4854ms] [ERROR] [wecom-desktop/request] https://localhost.work.weixin.qq.com:50010/checkLoginState error TypeError: Failed to fetch
+    at window.fetch.window.fetch (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/318.74dc3f8e7dfe1d6da346.js:1:39443)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140758
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140043
+    at Object.next (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140148)
+    at d (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:138795)
+    at a (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141172)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141231
+    at new Promise (<anonymous>)
+    at w (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:141113)
+    at https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:138964 @ https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:0
+[    4856ms] [WARNING] [ww-partner-login:client-message] missing handler {type: init} @ https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:0
+[    8838ms] [ERROR] [wecom-desktop/request] https://localhost.work.weixin.qq.com:50011/checkLoginState error AbortError: signal is aborted without reason
+    at o (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140247) @ https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:0
+[    8839ms] [ERROR] [wecom-desktop/request] https://localhost.work.weixin.qq.com:50012/checkLoginState error AbortError: signal is aborted without reason
+    at o (https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:1:140247) @ https://wwcdn.weixin.qq.com/node/wwlogin/wwlogin/mono/ww-partner-login/918.e37472175e0ad0bc6037.js:0
+[   13201ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://service-4y7r0fta-1251316161.gz.apigw.tencentcs.com/release/toggleProxy-1613409159:0
+[   13205ms] Error: Network Error
+    at t.exports (https://res.wx.qq.com/d/feature-components/tencent_docs_multi_tools-3fd512.js:1:41499)
+    at m.onerror (https://res.wx.qq.com/d/feature-components/tencent_docs_multi_tools-3fd512.js:1:40306)
+    at XMLHttpRequest.a (https://res.wx.qq.com/d/blankpage/chunk/989-11a76a.js:1:9410)
+[   13232ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://passport.woa.com/assets/public/images/favicon.ico:0
+[   34182ms] [LOG] tdocJSAPI 1.163.0 @ https://res.wx.qq.com/d/tdocsJSAPI/latest/index-pc.js:36
+[   34185ms] [WARNING] =====bigfont init===== undefined @ https://doc.weixin.qq.com/sheet/e3_AK4A7gauACQCNBDkBuUzxRDWRI0AM?scode=AAoA1wcYAAco79q17nAK4A7gauACQ&tab=gg8h0x:0
+[   36303ms] [WARNING] 初始化拦截器-2.0 @ https://res.wx.qq.com/d/sheet/js/initial_vendors_tencent.10d44e3b497394c2.js:0
+[   36304ms] [INFO] ----- re add user index @ https://res.wx.qq.com/d/sheet/js/initial_vendors_tencent.10d44e3b497394c2.js:0
+[   36351ms] [WARNING] 初始化拦截器-2.0 @ https://res.wx.qq.com/d/sheet/js/initial_vendors_tencent.10d44e3b497394c2.js:0
+[   36497ms] [WARNING] 没有 mqq，无法使用 support bridge！ @ https://res.wx.qq.com/d/sheet/js/initial_vendors_public_2.8f2684555dedfc08.js:57
+[   36667ms] [LOG] %c表格 display:inline-block;background-color:#2a65f5;color:#fff;padding:2px 4px;font-size:14px; @ https://res.wx.qq.com/d/sheet/js/page-main.cca92cf9778c79a4.js:84
+[   36668ms] [LOG] %c数据版本%cunknown display:inline-block;background-color:#e07800;color:#fff;padding:2px 4px;font-size:12px; display:inline-block;background-color:rgba(69, 77, 90, 0.6);color:#fff;padding:2px 4px;font-size:12px; @ https://res.wx.qq.com/d/sheet/js/page-main.cca92cf9778c79a4.js:84
+[   36668ms] [LOG] %c代码版本%c3.0.29883413 display:inline-block;background-color:#e07800;color:#fff;padding:2px 4px;font-size:12px; display:inline-block;background-color:rgba(69, 77, 90, 0.6);color:#fff;padding:2px 4px;font-size:12px; @ https://res.wx.qq.com/d/sheet/js/page-main.cca92cf9778c79a4.js:84
+[   36668ms] [LOG] %c分支版本%cdaily-20261023_ooxml-9ca1f706 display:inline-block;background-color:#e07800;color:#fff;padding:2px 4px;font-size:12px; display:inline-block;background-color:rgba(69, 77, 90, 0.6);color:#fff;padding:2px 4px;font-size:12px;  @ https://res.wx.qq.com/d/sheet/js/page-main.cca92cf9778c79a4.js:84
+[   36668ms] [LOG] %c温馨提示：请勿在此控制台输入来源不明的代码，以免您的文档数据或账号信息遭到泄漏 display:inline-block;background-color:#e02424;color:#fff;padding:2px 4px;font-size:14px; @ https://res.wx.qq.com/d/sheet/js/page-main.cca92cf9778c79a4.js:84
+[   36677ms] [INFO] [2026-11-02T11:27:33.349] [INFO ] [LifecycleScheduler] - lifecycle scheduler starup @ https://res.wx.qq.com/d/sheet/js/initial_all_vendors.95c63dafd5342980.js:0
+[   37214ms] [WARNING] Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently @ https://res.wx.qq.com/d/sheet/js/initial_core_1.d9b2d4561fbdaa99.js:8
+[   37255ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://report.idqqimg.com/api/10/envelope/?sentry_key=d5cad03a5ec748da88b7aeab7dc4f137&sentry_version=7&sentry_client=sentry.javascript.browser%2F7.77.0:0
+[   39960ms] [ERROR] 加载 AppConfig 配置出错 @ https://res.wx.qq.com/d/sheet/worker/static/js/public-worker.9353e1a4e4ec8b73.js?:0
+[   42046ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://report.idqqimg.com/api/10/envelope/?sentry_key=d5cad03a5ec748da88b7aeab7dc4f137&sentry_version=7&sentry_client=sentry.javascript.browser%2F7.77.0:0
+[   42669ms] [INFO] init-message null undefined @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[   42693ms] [INFO] [CollabCenter] handleUserJoin {vids: Array(1), vidsLength: 1, viewingUserLength: 0} @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[   42700ms] [INFO] [CollabCenter] fetchDetail {forceUpdate: false, hasFetchDetail: false} @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[   46770ms] [INFO] [capacity-check][info] use exist instance, version = 1.0.206 @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[   46770ms] [INFO] [capacity-check][info] create new instance, version = 1.0.206 @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[   46772ms] [INFO] [capacity-check][info] last FetchData at 2026/11/2 11:27:43 @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[   46787ms] [INFO] [capacity-check][info] init 13102703934255423 13102702123680575 e3_AK4A7gauACQCNBDkBuUzxRDWRI0AM undefined sheet other undefined @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[   46789ms] [INFO] [capacity-check][info] FileMetaInfo.subscribe no data: e3_AK4A7gauACQCNBDkBuUzxRDWRI0AM null @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[   47078ms] [INFO] [capacity-check][info] FileMetaInfo.subscribe with data: {creatorVid: 1688850475708078, creatorName: 胡欣, createTime: 2026-8-11, isSelf: false, isSameCorp: true} @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[   47162ms] [INFO] [capacity-check][info] requestDocCapacityDetail result {show_capacity_detail: false, user: Object, owner: Object, profile_open: true} @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[   47163ms] [INFO] [capacity-check][info] result {user_capacity_detail: Object, show_capacity_detail: false} {user_capacity_detail: Object, doc_capacity_detail: Object, show_capacity_detail: false} {is_pro: false, admin_type: 1, corp_is_trial_pro: false, corp_is_vip: true, has_order: false} {enable_advance: true, enable_reject_when_over_capacity: false} {enable_advance: true, enable_reject_when_over_capacity: false} @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[   47164ms] [INFO] cube {action: initCapacityCheckService, channel1: success} @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[   47346ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://docrp.weixin.qq.com/wl/api/v1/open/report:0
+[   47350ms] [WARNING] [wl]socket_roomstatechange_OPENED_v3超过主动上报次数，忽略本次上报 @ https://doc.weixin.qq.com/scenario/pub/wl2/browser-backend-worker-1.59.0.js:1
+[   47495ms] [TABLE] [p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p, p] @ https://res.wx.qq.com/d/sheet/js/page-main.cca92cf9778c79a4.js:79
+[   53555ms] [INFO] [CollabCenter] handleUserJoin {vids: Array(8), vidsLength: 8, viewingUserLength: 1} @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[  108477ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://docrp.weixin.qq.com/wl/api/v1/open/report:0
+[  108479ms] [WARNING] [wl]socket_roomstatechange_CONNECTING_v3超过主动上报次数，忽略本次上报 @ https://doc.weixin.qq.com/scenario/pub/wl2/browser-backend-worker-1.59.0.js:1
+[  114422ms] [WARNING] [wl]socket_roomstatechange_OPENED_v3超过主动上报次数，忽略本次上报 @ https://doc.weixin.qq.com/scenario/pub/wl2/browser-backend-worker-1.59.0.js:1
+[  114441ms] [INFO] [CollabCenter] handleUserJoin {vids: Array(8), vidsLength: 8, viewingUserLength: 8} @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[  157555ms] [INFO] [CollabCenter] handleUserLeave [13102700119156537] @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[  225358ms] [WARNING] Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently @ https://res.wx.qq.com/d/sheet/js/15560.1033082e096a1420.js:0
+[  226290ms] [INFO] [Clipboard] writeInClipBoard using: DefaultCopyPaste @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[  242584ms] [INFO] [CollabCenter] handleUserJoin {vids: Array(8), vidsLength: 8, viewingUserLength: 7} @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12

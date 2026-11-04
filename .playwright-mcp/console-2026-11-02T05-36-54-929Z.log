@@ -1,0 +1,56 @@
+[-7761001ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://report.idqqimg.com/api/10/envelope/?sentry_key=d5cad03a5ec748da88b7aeab7dc4f137&sentry_version=7&sentry_client=sentry.javascript.browser%2F7.77.0:0
+[-7756210ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://report.idqqimg.com/api/10/envelope/?sentry_key=d5cad03a5ec748da88b7aeab7dc4f137&sentry_version=7&sentry_client=sentry.javascript.browser%2F7.77.0:0
+[-7750910ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://docrp.weixin.qq.com/wl/api/v1/open/report:0
+[-7689779ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://docrp.weixin.qq.com/wl/api/v1/open/report:0
+[-7572898ms] [WARNING] Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently @ https://res.wx.qq.com/d/sheet/js/15560.1033082e096a1420.js:0
+[ -142068ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://docrp.weixin.qq.com/wl/api/v1/open/report:0
+[    -155ms] [WARNING] Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently @ https://res.wx.qq.com/d/sheet/js/15560.1033082e096a1420.js:0
+[-7764074ms] [LOG] tdocJSAPI 1.163.0 @ https://res.wx.qq.com/d/tdocsJSAPI/latest/index-pc.js:36
+[-7764071ms] [WARNING] =====bigfont init===== undefined @ https://doc.weixin.qq.com/sheet/e3_AK4A7gauACQCNBDkBuUzxRDWRI0AM?scode=AAoA1wcYAAco79q17nAK4A7gauACQ&tab=gg8h0x:0
+[-7761953ms] [WARNING] 初始化拦截器-2.0 @ https://res.wx.qq.com/d/sheet/js/initial_vendors_tencent.10d44e3b497394c2.js:0
+[-7761952ms] [INFO] ----- re add user index @ https://res.wx.qq.com/d/sheet/js/initial_vendors_tencent.10d44e3b497394c2.js:0
+[-7761905ms] [WARNING] 初始化拦截器-2.0 @ https://res.wx.qq.com/d/sheet/js/initial_vendors_tencent.10d44e3b497394c2.js:0
+[-7761759ms] [WARNING] 没有 mqq，无法使用 support bridge！ @ https://res.wx.qq.com/d/sheet/js/initial_vendors_public_2.8f2684555dedfc08.js:57
+[-7761589ms] [LOG] %c表格 display:inline-block;background-color:#2a65f5;color:#fff;padding:2px 4px;font-size:14px; @ https://res.wx.qq.com/d/sheet/js/page-main.cca92cf9778c79a4.js:84
+[-7761588ms] [LOG] %c数据版本%cunknown display:inline-block;background-color:#e07800;color:#fff;padding:2px 4px;font-size:12px; display:inline-block;background-color:rgba(69, 77, 90, 0.6);color:#fff;padding:2px 4px;font-size:12px; @ https://res.wx.qq.com/d/sheet/js/page-main.cca92cf9778c79a4.js:84
+[-7761588ms] [LOG] %c代码版本%c3.0.29883413 display:inline-block;background-color:#e07800;color:#fff;padding:2px 4px;font-size:12px; display:inline-block;background-color:rgba(69, 77, 90, 0.6);color:#fff;padding:2px 4px;font-size:12px; @ https://res.wx.qq.com/d/sheet/js/page-main.cca92cf9778c79a4.js:84
+[-7761588ms] [LOG] %c分支版本%cdaily-20261023_ooxml-9ca1f706 display:inline-block;background-color:#e07800;color:#fff;padding:2px 4px;font-size:12px; display:inline-block;background-color:rgba(69, 77, 90, 0.6);color:#fff;padding:2px 4px;font-size:12px;  @ https://res.wx.qq.com/d/sheet/js/page-main.cca92cf9778c79a4.js:84
+[-7761588ms] [LOG] %c温馨提示：请勿在此控制台输入来源不明的代码，以免您的文档数据或账号信息遭到泄漏 display:inline-block;background-color:#e02424;color:#fff;padding:2px 4px;font-size:14px; @ https://res.wx.qq.com/d/sheet/js/page-main.cca92cf9778c79a4.js:84
+[-7761579ms] [INFO] [2026-11-02T11:27:33.349] [INFO ] [LifecycleScheduler] - lifecycle scheduler starup @ https://res.wx.qq.com/d/sheet/js/initial_all_vendors.95c63dafd5342980.js:0
+[-7755587ms] [INFO] init-message null undefined @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7755563ms] [INFO] [CollabCenter] handleUserJoin Object @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7755556ms] [INFO] [CollabCenter] fetchDetail Object @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7751486ms] [INFO] [capacity-check][info] use exist instance, version = 1.0.206 @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7751486ms] [INFO] [capacity-check][info] create new instance, version = 1.0.206 @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7751484ms] [INFO] [capacity-check][info] last FetchData at 2026/11/2 11:27:43 @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7751469ms] [INFO] [capacity-check][info] init 13102703934255423 13102702123680575 e3_AK4A7gauACQCNBDkBuUzxRDWRI0AM undefined sheet other undefined @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7751467ms] [INFO] [capacity-check][info] FileMetaInfo.subscribe no data: e3_AK4A7gauACQCNBDkBuUzxRDWRI0AM null @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7751178ms] [INFO] [capacity-check][info] FileMetaInfo.subscribe with data: Object @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7751094ms] [INFO] [capacity-check][info] requestDocCapacityDetail result Object @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7751093ms] [INFO] [capacity-check][info] result Object Object Object Object Object @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7751092ms] [INFO] cube Object @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7750761ms] [TABLE] Array(29) @ https://res.wx.qq.com/d/sheet/js/page-main.cca92cf9778c79a4.js:79
+[-7744701ms] [INFO] [CollabCenter] handleUserJoin Object @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7683815ms] [INFO] [CollabCenter] handleUserJoin Object @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7640701ms] [INFO] [CollabCenter] handleUserLeave Array(1) @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7571966ms] [INFO] [Clipboard] writeInClipBoard using: DefaultCopyPaste @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7555672ms] [INFO] [CollabCenter] handleUserJoin Object @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[ -142427ms] [INFO] [CollabCenter] handleUserJoin Object @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[ -141711ms] [INFO] [CollabCenter] handleUserJoin Object @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[  -72630ms] [INFO] [CollabCenter] handleUserJoin Object @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[  -61610ms] [INFO] [CollabCenter] handleUserJoin Object @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[  -58706ms] [INFO] [CollabCenter] handleUserJoin Object @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[-7758296ms] [ERROR] 加载 AppConfig 配置出错 @ https://res.wx.qq.com/d/sheet/worker/static/js/public-worker.9353e1a4e4ec8b73.js?:0
+[-7750906ms] [WARNING] [wl]socket_roomstatechange_OPENED_v3超过主动上报次数，忽略本次上报 @ https://doc.weixin.qq.com/scenario/pub/wl2/browser-backend-worker-1.59.0.js:1
+[-7689777ms] [WARNING] [wl]socket_roomstatechange_CONNECTING_v3超过主动上报次数，忽略本次上报 @ https://doc.weixin.qq.com/scenario/pub/wl2/browser-backend-worker-1.59.0.js:1
+[-7683834ms] [WARNING] [wl]socket_roomstatechange_OPENED_v3超过主动上报次数，忽略本次上报 @ https://doc.weixin.qq.com/scenario/pub/wl2/browser-backend-worker-1.59.0.js:1
+[-7491655ms] [WARNING] [wl]socket_roomstatechange_CONNECTING_v3超过主动上报次数，忽略本次上报 @ https://doc.weixin.qq.com/scenario/pub/wl2/browser-backend-worker-1.59.0.js:1
+[ -142518ms] [LOG] [wl]report key cache is expired @ https://doc.weixin.qq.com/scenario/pub/wl2/browser-backend-worker-1.59.0.js:1
+[ -142067ms] [WARNING] [wl]socket_roomstatechange_OPENED_v3超过主动上报次数，忽略本次上报 @ https://doc.weixin.qq.com/scenario/pub/wl2/browser-backend-worker-1.59.0.js:1
+[   19381ms] [INFO] [CollabCenter] handleUserLeave [13102702123680575] @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[   22845ms] [INFO] [CollabCenter] handleUserJoin {vids: Array(8), vidsLength: 8, viewingUserLength: 7} @ https://res.wx.qq.com/d/sheet/js/sentry.6b5984d0cdb489b8.js:12
+[   34179ms] [WARNING] Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently @ https://res.wx.qq.com/d/sheet/js/15560.1033082e096a1420.js:0
+[   80360ms] [WARNING] Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden.
+Element with focus: <div.operate-board>
+Ancestor with aria-hidden: <div.operate-board> @ https://doc.weixin.qq.com/sheet/e3_AK4A7gauACQCNBDkBuUzxRDWRI0AM?scode=AAoA1wcYAAco79q17nAK4A7gauACQ&tab=gg8h0x:0
+[   86838ms] [WARNING] Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently @ https://res.wx.qq.com/d/sheet/js/15560.1033082e096a1420.js:0
